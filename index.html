@@ -28,6 +28,8 @@
     <!-- (Optional) AOS Library for Scroll Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    <link rel="preload" href="industry.jpg" as="image">
+
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar-main" data-bs-offset="80">
@@ -72,7 +74,7 @@
     <section id="hero" class="d-flex align-items-center text-center text-white">
         <div class="container" data-aos="fade-up">
             <!-- My professional headshot -->
-            <img src="images/headshot.jpg" alt="Vincent Omondi" class="img-fluid rounded-circle mb-4 profile-picture">
+            <img src="industry.jpg" alt="Vincent Omondi" class="img-fluid rounded-circle mb-4 profile-picture">
             <h1 class="display-4 fw-bold">Vincent Omondi</h1>
             <h2 class="lead mb-4">Cybersecurity Specialist | Cloud Security Engineer | Software Developer</h2>
             <p class="lead col-lg-8 mx-auto mb-4">
@@ -92,6 +94,7 @@
     <section id="about" class="py-5">
         <div class="container" data-aos="fade-up">
             <h2 class="text-center mb-5 section-title">About Me</h2>
+             
             <div class="row align-items-center">
                 <div class="col-lg-8 mx-auto text-center">
                     <p class="lead mb-4">
@@ -113,8 +116,9 @@
                 </div>
             </div>
             <div class="text-center mt-4">
-                <!-- # url for my resume -->
-                <a href="#" class="btn btn-outline-primary"><i class="fas fa-download me-2"></i> Download My Resume</a>
+                <a href="assets/vincent_omondi_CV.pdf" class="btn btn-outline-primary" download>
+                    <i class="fas fa-download me-2"></i> Download My Resume (PDF)
+                </a>
             </div>
         </div>
     </section>
@@ -267,8 +271,11 @@
                             alt="Student Attachment Platform">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title fw-semibold">Student Attachment Platform</h5>
-                            <p class="card-text text-muted small flex-grow-1">Designed and developed a dashboard for
-                                student internship applications, resume uploads, and application tracking.</p>
+                            <p class="card-text text-muted small flex-grow-1">As part of my Year 3 academic journey, I collaborated with a team of five to design and develop
+                                a student attachment application platform. This innovative system streamlines the process for students
+                                to discover attachment opportunities, submit applications, and track their progress efficiently.
+                                The platform aims to bridge the gap between students and potential employers, enhancing career growth.
+                                </p></p>
                             <div class="mb-3">
                                 <span class="badge bg-primary me-1">PHP</span>
                                 <span class="badge bg-success me-1">HTML</span>
@@ -280,8 +287,9 @@
                                 <!--  # the actual links -->
                                 <a href="#" target="_blank" class="btn btn-sm btn-outline-primary me-2"><i
                                         class="fas fa-external-link-alt me-1"></i> Live Demo</a>
-                                <a href="#" target="_blank" class="btn btn-sm btn-outline-secondary"><i
-                                        class="fab fa-github me-1"></i> Code</a>
+                                <a href="https://github.com/IT-Tutors-Coding-Space/Attachment.git" target="_blank" class="btn btn-sm btn-outline-secondary">
+                                    <i class="fab fa-github me-1"></i> Code
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -289,23 +297,28 @@
                 <!-- Project 2 -->
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="card h-100 shadow-sm project-card">
-                        <!-- my project screenshot -->
-                        <img src="images/project_user_management.jpg" class="card-img-top" alt="User Management System">
+                        <!-- Project screenshot -->
+                        <img src="images/portfolio_project.jpg" class="card-img-top" alt="Portfolio Website">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title fw-semibold">User Management System</h5>
-                            <p class="card-text text-muted small flex-grow-1">Built a role-based access control (RBAC)
-                                system integrated within a larger application, improving security and organization for
-                                different user departments.</p>
+                            <h5 class="card-title fw-semibold">Portfolio Project - PLP Hackathon</h5>
+                            <p class="card-text text-muted small flex-grow-1">
+                                Designed and developed a personal portfolio website to showcase my skills, projects, and credentials.
+                                The website features a responsive design, interactive elements, and a clean UI/UX layout.
+                            </p>
                             <div class="mb-3">
-                                <span class="badge bg-primary me-1">Django/PHP</span> <!-- Choose one or both -->
-                                <span class="badge bg-secondary me-1">RBAC</span>
-                                <span class="badge bg-dark me-1">Security</span>
+                                <span class="badge bg-primary me-1">HTML</span>
+                                <span class="badge bg-secondary me-1">CSS</span>
+                                <span class="badge bg-dark me-1">JavaScript</span>
                             </div>
                             <div>
-                                <!--  #  actual links -->
-                                <a href="#" target="_blank" class="btn btn-sm btn-outline-primary me-2"><i class="fas fa-external-link-alt me-1"></i> Live Demo</a> 
-                                <a href="#" target="_blank" class="btn btn-sm btn-outline-secondary"><i
-                                        class="fab fa-github me-1"></i> Code</a>
+                                <!-- Replace # with actual links -->
+                                <a href="#" target="_blank" class="btn btn-sm btn-outline-primary me-2">
+                                    <i class="fas fa-external-link-alt me-1"></i> Live Demo
+                                </a>
+                                <a href="https://github.com/owuorviny109/my-portfolio-website.git" target="_blank"
+                                    class="btn btn-sm btn-outline-secondary">
+                                    <i class="fab fa-github me-1"></i> Code
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -361,7 +374,7 @@
                                 <h5 class="fw-semibold mb-2"><i class="fab fa-aws me-2 text-warning"></i>AWS Cloud
                                     Computing Training</h5>
                                 <ul class="list-unstyled text-muted small mb-0">
-                                    <li>AWS re/Start Program (Agera & Ajira Sponsored)</li>
+                                    <li>AWS re/Start Program (AWS & Ajira Kenya Sponsored)</li>
                                     <li>AWS Cloud Computing – ALX</li>
                                     <li>AWS Cloud Concepts – DataCamp</li>
                                 </ul>
@@ -380,12 +393,25 @@
                                 </ul>
                             </div>
                         </div>
+                        <!-- Software Development - PLP Africa -->
+                        <div class="col-12" data-aos="fade-left" data-aos-delay="300">
+                            <div class="education-item p-4 border rounded shadow-sm">
+                                <h5 class="fw-semibold mb-2"><i class="fas fa-laptop-code me-2 text-info"></i>Software
+                                    Development Program</h5>
+                                <ul class="list-unstyled text-muted small mb-0">
+                                    <li>Power Learn Project (PLP) Africa – Fully funded</li>
+                                    <li>Web Development (HTML, CSS, JavaScript)</li>
+                                    <li>MySQL Database & Python Programming</li>
+                                    <li>Software Development Essentials</li>
+                                    <li>First project: Hackathon to build this portfolio website</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
+    </section> 
     <!-- Contact Section -->
     <section id="contact" class="py-5 bg-primary text-white">
         <div class="container" data-aos="fade-up">
@@ -514,3 +540,4 @@
 </body>
 
 </html>
+
