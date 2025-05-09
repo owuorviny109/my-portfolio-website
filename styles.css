@@ -1,9 +1,11 @@
 /* General Styling */
 body {
     font-family: 'Poppins', sans-serif;
-    /* Use Google Font */
-    color: #333;
+    color: #343a40;
+    /* Darker text for better contrast */
     line-height: 1.7;
+    background-color: #f8f9fa;
+    /* Light background for non-colored sections */
 }
 
 h1,
@@ -13,21 +15,23 @@ h4,
 h5,
 h6 {
     font-weight: 600;
-    /* Slightly bolder headings */
+    color: #212529;
+    /* Even darker headings */
 }
 
 /* Sections */
 section {
     padding: 80px 0;
-    /* Vertical padding for sections */
+    overflow-x: hidden;
+    /* Prevent horizontal scroll from AOS */
 }
 
 .section-title {
     font-weight: 700;
     margin-bottom: 4rem;
-    /* More space below section titles */
     position: relative;
     padding-bottom: 15px;
+    color: #212529;
 }
 
 /* Underline effect for section titles */
@@ -38,13 +42,19 @@ section {
     width: 60px;
     height: 3px;
     background: var(--bs-primary);
-    /* Use Bootstrap primary color */
+    /* Bootstrap primary color */
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    border-radius: 2px;
+    /* Slightly rounded ends */
 }
 
 /* White title underline for dark backgrounds */
+#contact .section-title {
+    color: #fff;
+}
+
 #contact .section-title::after {
     background: #fff;
 }
@@ -52,20 +62,24 @@ section {
 
 /* Navigation Bar */
 #navbar-main {
-    transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out;
+    transition: background-color 0.4s ease-in-out, padding 0.3s ease-in-out, box-shadow 0.4s ease-in-out;
+    background-color: rgba(33, 37, 41, 0.9);
+    /* Start slightly transparent */
 }
 
-/* Optional: Add a subtle background when scrolled */
 #navbar-main.scrolled {
-    background-color: rgba(10, 85, 57, 0.95) !important;
-    /* Slightly transparent dark */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #212529;
+    /* Solid dark when scrolled */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .navbar-dark .navbar-nav .nav-link {
     color: rgba(255, 255, 255, 0.8);
     padding: 0.8rem 1rem;
     transition: color 0.3s ease;
+    font-weight: 500;
+    /* Slightly bolder nav links */
+    position: relative;
 }
 
 .navbar-dark .navbar-nav .nav-link:hover,
@@ -73,129 +87,496 @@ section {
     color: #fff;
 }
 
- 
-/* Hero Section */
-#hero {
-    background-color: #1d2671; /* Fallback color similar to the gradient */
-    background: linear-gradient(rgba(29, 38, 113, 0.7), rgba(10, 21, 78, 0.8)), url('./hero-background.jpg');
-    /* Ensure the correct relative path to the image */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    /* Parallax effect */
-    min-height: 100vh;
-    /* Full viewport height */
-    color: #fff;
+/* Optional: Underline effect for active/hover nav link */
+.navbar-dark .navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 5px;
+    /* Adjust position */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--bs-warning);
+    /* Use a contrasting color */
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
 }
 
+.navbar-dark .navbar-nav .nav-link:hover::before,
+.navbar-dark .navbar-nav .nav-link.active::before {
+    visibility: visible;
+    width: 70%;
+    /* Adjust width of underline */
+}
+
+
+/* Hero Section */
+#hero {
+    /* Using a less intense gradient */
+    background: linear-gradient(rgba(40, 50, 90, 0.75), rgba(20, 30, 60, 0.85)), url('images/hero-background.jpg');
+    /* Ensure path is correct */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: #fff;
+    display: flex;
+    /* Ensure flex properties work */
+    align-items: center;
+    /* Vertically center content */
+    justify-content: center;
+    /* Horizontally center content */
+}
+
+
+/* Hero Section - Dynamic Typing Styles (ADAPTED FROM AI PULSE CONCEPT) */
+#hero-typing-container {
+    /* You can add specific alignment or spacing here if needed,
+       but it will largely inherit from the #hero section's text-center. */
+    /* Ensure it allows for the h1 and cursor to sit correctly. */
+}
+
+#hero-typed-text-output { /* This is the h1 with id="hero-typed-text-output" */
+    min-height: 1.2em; /* Prevents layout jump as text types out, adjust based on your display-4 font size */
+    color: #fff; /* Ensure text is white, matching hero section */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* From your original hero h1 style */
+    /* display-4 and fw-bold classes from HTML will handle font size and weight */
+    display: inline; /* To allow cursor to sit next to it nicely if not a block element */
+}
+
+.hero-typing-cursor {
+    display: inline-block;
+    /* Option 1: Block cursor */
+    background-color: #fff; /* Cursor color */
+    width: 3px; /* Slightly thicker cursor for h1 */
+    height: 0.9em; /* Adjust to match cap height of h1 */
+    margin-left: 5px; /* Space from text */
+    /* Option 2: Line cursor (like in AI Pulse)
+    border-left: 3px solid #fff;
+    height: 1em; // Adjust to match text height
+    background-color: transparent; // Ensure no background if using border
+    margin-left: 1px;
+    */
+    animation: blink-hero-cursor 0.75s step-end infinite;
+    vertical-align: baseline; /* Or experiment with 'middle', 'text-bottom' */
+    opacity: 1;
+}
+
+/* Blinking cursor animation */
+@keyframes blink-hero-cursor { /* Renamed to avoid conflict if you had other blink animations */
+    from, to { background-color: transparent; opacity: 1; } /* Or border-color if using border */
+    50% { background-color: #fff; opacity: 1;} /* Or border-color */
+}
+
+/* Responsive adjustments for typed text if needed (match your h1 styles) */
+@media (max-width: 991.98px) {
+    #hero-typed-text-output {
+        font-size: 2.8rem !important; /* Ensure it matches your responsive hero h1 */
+    }
+    .hero-typing-cursor {
+        height: 0.9em; /* Adjust if font size changes dramatically */
+    }
+}
+
+@media (max-width: 767.98px) {
+    #hero-typed-text-output {
+        font-size: 2.2rem !important; /* Ensure it matches your responsive hero h1 */
+        min-height: 1.1em;
+    }
+    .hero-typing-cursor {
+        height: 0.85em; /* Adjust if font size changes dramatically */
+         width: 2px;
+    }
+}
+
+
+
 .profile-picture {
-    width: 30px;
-    height: 50px;
+    width: 150px;
+    /* Increased size */
+    height: 150px;
+    /* Increased size */
     object-fit: cover;
-    border: 5px solid rgba(255, 255, 255, 0.5);
+    border: 5px solid rgba(255, 255, 255, 0.6);
+    /* Slightly thicker border */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    /* Subtle glow */
+}
+
+#hero h1 {
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    /* Subtle text shadow */
+}
+
+#hero h2 {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#hero p.lead {
+    color: rgba(255, 255, 255, 0.85);
 }
 
 #hero .btn-primary {
-    background-color: #0d6efd;
-    /* Adjust primary color if needed */
-    border-color: #0d6efd;
+    background-color: var(--bs-warning);
+    /* Example: Use warning color */
+    border-color: var(--bs-warning);
+    color: #212529;
+    /* Dark text on light button */
+    padding: 12px 28px;
+    /* Larger buttons */
+    font-weight: 600;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+#hero .btn-primary:hover {
+    background-color: #ffca2c;
+    /* Slightly lighter warning */
+    border-color: #ffca2c;
+    transform: translateY(-2px);
+}
+
+#hero .btn-outline-light {
+    padding: 12px 28px;
+    font-weight: 600;
+    border-width: 2px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 #hero .btn-outline-light:hover {
     background-color: #fff;
     color: #333;
+    transform: translateY(-2px);
 }
 
 /* About Section */
 #about .btn-outline-primary {
     margin-top: 20px;
+    font-weight: 500;
+    padding: 10px 25px;
+    border-width: 2px;
+}
+
+#about p {
+    color: #555;
+    /* Slightly lighter text than default */
 }
 
 /* Skills Section */
+#skills {
+    background-color: #ffffff;
+    /* White background for skills */
+}
+
 .skill-card {
-    background-color: #fff;
+    background-color: #f8f9fa;
+    /* Light grey background for cards */
+    border: 1px solid #e9ecef;
+    /* Subtle border */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    /* Make cards equal height in a row */
+    display: flex;
+    flex-direction: column;
 }
 
 .skill-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+.skill-card .icon {
+    margin-bottom: 1.5rem;
+    /* More space below icon */
 }
 
 .skill-card .icon i {
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .skill-card:hover .icon i {
-    transform: scale(1.1);
+    transform: scale(1.15);
+    color: var(--bs-primary);
+    /* Highlight icon color on hover */
+}
+
+.skill-card h4 {
+    color: var(--bs-primary);
+    /* Match heading color */
+}
+
+.skill-card ul {
+    margin-bottom: 0;
+    /* Remove default bottom margin */
 }
 
 .skill-card ul li {
-    padding: 0.2rem 0;
+    padding: 0.3rem 0;
+    font-size: 0.9rem;
+    color: #6c757d;
 }
 
 /* Experience Section */
+#experience {
+    background-color: #ffffff;
+    /* White background */
+}
+
 .experience-item {
     position: relative;
-    /* Optional: Add a subtle left border */
-    border-left: 3px solid var(--bs-primary); 
-     padding-left: 25px;    
+    border-left: 3px solid var(--bs-primary);
+    padding-left: 25px;
+    margin-bottom: 2rem;
+    /* Spacing between items */
+    background-color: #f8f9fa;
+    /* Light background for each item */
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease;
+}
+
+.experience-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+}
+
+.experience-item h4 {
+    color: #343a40;
+}
+
+.experience-item h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem !important;
+}
+
+.experience-item p.text-muted i {
+    color: var(--bs-primary);
+    /* Icon color */
+}
+
+.experience-item ul {
+    padding-left: 1.2rem;
+    /* Indent list items */
+    list-style: disc;
+    /* Use standard bullets */
+}
+
+.experience-item ul li {
+    margin-bottom: 0.4rem;
+    color: #555;
 }
 
 /* Projects Section */
-.project-card img {
-    aspect-ratio: 16 / 10;
-    /* Maintain aspect ratio */
-    object-fit: cover;
-    filter: brightness(95%);
-    transition: filter 0.3s ease;
+#projects {
+    background-color: #e9ecef;
+    /* Slightly darker background for projects */
 }
 
-.project-card:hover img {
-    filter: brightness(105%);
+.project-card {
+    /* transition: transform 0.3s ease, box-shadow 0.3s ease; */ /* This was from your original */
+    overflow: hidden;
+    /* Prevent content overflow on transform */
+    border: 1px solid transparent; /* Prepare for border change on hover, removed default card border */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out; /* Combined transitions */
+}
+
+.project-card:hover {
+    transform: translateY(-10px); /* Kept your preferred translateY */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important; /* Kept your preferred shadow */
+    border-color: var(--bs-primary); /* Added from snippet for hover border */
+}
+
+.project-card .card-img-top { /* Combined image styles */
+    height: 200px; /* Or your desired height - from snippet */
+    object-fit: cover; /* Ensures image covers - from snippet */
+    width: 100%; /* Ensures image spans card width - from snippet */
+    filter: brightness(95%); /* From your original */
+    transition: filter 0.4s ease, transform 0.4s ease; /* From your original, added transform from snippet */
+}
+
+.project-card:hover .card-img-top {
+    filter: brightness(100%); /* From your original */
+    transform: scale(1.05); /* Combined slight zoom effect from both */
 }
 
 .project-card .card-body {
     background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card .card-title {
+    color: var(--bs-primary);
+}
+
+.project-card .card-text {
+    font-size: 0.9rem;
+    color: #6c757d;
+    flex-grow: 1;
+    /* Make text take available space */
 }
 
 .project-card .badge {
     font-size: 0.75rem;
+    padding: 0.3em 0.6em;
+    margin-bottom: 0.3rem;
+    /* Add spacing below badges if they wrap */
+}
+
+.project-card .btn {
+    font-size: 0.85rem;
+    font-weight: 500;
 }
 
 /* Education Section */
-.education-item {
-    background-color: #fff;
+#education {
+    background-color: #ffffff;
+    /* White background */
 }
 
-.education-item i {
+.education-item {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    height: 100%;
+    /* Ensure cards align nicely */
+    transition: box-shadow 0.3s ease;
+}
+
+.education-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+}
+
+.education-item h4,
+.education-item h5 {
+    color: #343a40;
+}
+
+.education-item i.fa-calendar-alt {
+    color: var(--bs-primary);
+}
+
+.education-item ul {
+    margin-top: 0.5rem;
+}
+
+.education-item ul li {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+    color: #555;
+}
+
+.education-item ul li i {
+    /* Icons within lists */
     width: 20px;
     /* Align icons */
+    text-align: center;
+    margin-right: 5px;
+    /* Space after icon */
 }
 
 /* Contact Section */
 #contact {
     background-color: var(--bs-primary);
-    /* Use Bootstrap primary color */
 }
 
-#contact .section-title {
-    color: #fff;
+#contact p.lead {
+    color: rgba(255, 255, 255, 0.9);
 }
 
 #contact .btn-outline-light {
     border-width: 2px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
+
+#contact .btn-outline-light:hover {
+    background-color: #fff;
+    color: var(--bs-primary);
+    transform: translateY(-2px);
+}
+
+#contact .contact-links a {
+    /* Ensure buttons wrap nicely */
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+/* Styling for the contact form */
+#contact form label {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    /* Add space below labels */
+}
+
+#contact form .form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    padding: 0.75rem 1rem;
+    /* Adjust padding */
+}
+
+#contact form .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+#contact form .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #fff;
+    color: #fff;
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+    /* Custom focus ring */
+}
+
+#contact form textarea.form-control {
+    min-height: 150px;
+    /* Ensure textarea is reasonably tall */
+}
+
+#contact form button[type="submit"] {
+    background-color: #fff;
+    color: var(--bs-primary);
+    font-weight: 600;
+    padding: 12px 35px;
+    /* Slightly larger button */
+    border: none;
+    border-radius: 50px;
+    /* Pill shape */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+#contact form button[type="submit"]:hover {
+    background-color: #e9ecef;
+    /* Slightly off-white hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
 
 /* Footer */
 footer {
     background-color: #212529;
-    /* Darker footer */
 }
 
 footer p {
     margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.7);
 }
+
+footer .footer-social-links a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    /* Needed for transform */
+}
+
+footer .footer-social-links a:hover {
+    color: #fff;
+    transform: scale(1.1);
+    /* Slight scale effect */
+}
+
 
 /* Responsive Adjustments */
 @media (max-width: 991.98px) {
@@ -212,20 +593,41 @@ footer p {
     }
 
     #hero h2 {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
 
     .profile-picture {
-        width: 75px;
-        height: 75px;
+        width: 120px;
+        height: 120px;
+    }
+
+    .navbar-nav {
+        background-color: #212529;
+        /* Add background to collapsed nav */
+        padding: 1rem 0;
+        margin-top: 0.5rem;
+        /* Space between toggle and menu */
+        border-radius: 0.25rem;
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+        padding: 0.7rem 1rem;
+        text-align: center;
+    }
+
+    .navbar-dark .navbar-nav .nav-link::before {
+        bottom: 2px;
+        /* Adjust underline position for centered text */
     }
 }
 
 @media (max-width: 767.98px) {
     #hero {
         min-height: auto;
-         
-        padding: 100px 0;
+        padding: 120px 0 80px 0;
+        /* Adjust padding for smaller screens */
+        background-attachment: scroll;
+        /* Disable parallax on mobile for performance */
     }
 
     #hero h1 {
@@ -233,20 +635,57 @@ footer p {
     }
 
     #hero h2 {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     .profile-picture {
-        width: 60px;
-        height: 60px;
+        width: 100px;
+        height: 100px;
     }
 
     #hero .btn {
         font-size: 0.9rem;
-        padding: 0.6rem 1.2rem;
+        padding: 0.8rem 1.5rem;
+        display: block;
+        /* Stack buttons */
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 250px;
+        /* Limit button width */
+    }
+
+    #hero .btn:last-child {
+        margin-top: 1rem;
+        /* Space between stacked buttons */
     }
 
     .skill-card {
         margin-bottom: 1.5rem;
+    }
+
+    .contact-links a.btn {
+        /* Target only buttons */
+        display: block;
+        /* Stack contact buttons */
+        margin: 0 auto 1rem auto;
+        /* Center and space */
+        max-width: 280px;
+    }
+
+    #contact .btn-outline-light {
+        margin-right: auto !important;
+        /* Ensure centering works */
+        margin-left: auto !important;
+    }
+
+    #contact form .form-control-lg {
+        /* Reduce size on mobile */
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+
+    #contact form button[type="submit"] {
+        padding: 10px 30px;
+        font-size: 1rem;
     }
 }
