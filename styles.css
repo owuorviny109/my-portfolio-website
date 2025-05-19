@@ -1,691 +1,1179 @@
 /* General Styling */
-body {
-    font-family: 'Poppins', sans-serif;
-    color: #343a40;
-    /* Darker text for better contrast */
-    line-height: 1.7;
-    background-color: #f8f9fa;
-    /* Light background for non-colored sections */
+:root {
+    /* Define theme colors here for easy management and dark/light mode switching */
+    --primary-color: #0d6efd; /* Bootstrap default, can be customized */
+    --secondary-color: #6c757d;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --text-color: #343a40;
+    --heading-color: #212529;
+    --background-color: #f8f9fa;
+    --card-bg-color: #ffffff;
+    --border-color: #e9ecef;
+
+    /* Cybersecurity Theme Specifics (examples, adjust as needed) */
+    --cyber-accent-color: #00ffdd; /* A vibrant teal/cyan for accents */
+    --cyber-dark-bg: #0a192f; /* A deep navy for dark mode or specific sections */
+    --cyber-dark-text: #ccd6f6;
+    --cyber-dark-heading: #e6f1ff;
+    --terminal-bg: #000000;
+    --terminal-text: #00ff00; /* Classic green terminal text */
+    --terminal-prompt-color: #00aaff;
+
+    /* Font Stacks */
+    --font-primary: 'Poppins', sans-serif;
+    --font-monospace: 'Roboto Mono', monospace;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: 600;
-    color: #212529;
-    /* Even darker headings */
+/* --- LIGHT THEME (DEFAULT) --- */
+body {
+    font-family: var(--font-primary);
+    color: var(--text-color);
+    line-height: 1.7;
+    background-color: var(--background-color);
+    transition: background-color 0.3s ease, color 0.3s ease; /* For theme switching */
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700; /* Bolder default for headings */
+    color: var(--heading-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: darken(var(--primary-color), 10%);
+}
+
+/* --- DARK THEME STYLES --- */
+body[data-bs-theme="dark"] {
+    --text-color: var(--cyber-dark-text);
+    --heading-color: var(--cyber-dark-heading);
+    --background-color: var(--cyber-dark-bg);
+    --card-bg-color: #112240; /* Slightly lighter than main dark bg */
+    --border-color: #233554;
+    --primary-color: var(--cyber-accent-color); /* Change primary in dark mode if desired */
+}
+
+/* Specific dark theme overrides for Bootstrap components if needed */
+body[data-bs-theme="dark"] .navbar {
+    background-color: rgba(10, 25, 47, 0.85) !important; /* Darker transparent nav */
+}
+body[data-bs-theme="dark"] #navbar-main.scrolled {
+    background-color: var(--cyber-dark-bg) !important;
+}
+body[data-bs-theme="dark"] .section-title::after {
+    background: var(--cyber-accent-color);
+}
+body[data-bs-theme="dark"] .skill-card {
+    background-color: var(--card-bg-color);
+    border-color: var(--border-color);
+}
+body[data-bs-theme="dark"] .experience-item,
+body[data-bs-theme="dark"] .education-item {
+    background-color: var(--card-bg-color);
+    border-color: var(--border-color);
+}
+body[data-bs-theme="dark"] #projects {
+    background-color: #0f213a; /* Slightly different dark for projects */
+}
+body[data-bs-theme="dark"] .project-card .card-body {
+    background-color: var(--card-bg-color);
+}
+body[data-bs-theme="dark"] .project-card:hover {
+    border-color: var(--cyber-accent-color);
+}
+body[data-bs-theme="dark"] #contact {
+    background-color: var(--primary-color); /* Primary is now accent */
+}
+body[data-bs-theme="dark"] #contact.contact-section-bg {
+    background-color: var(--cyber-dark-bg); /* or a distinct dark contact bg */
+}
+body[data-bs-theme="dark"] #contact .section-title {
+    color: var(--cyber-dark-heading);
+}
+body[data-bs-theme="dark"] #contact .section-title::after {
+    background: var(--cyber-accent-color);
+}
+body[data-bs-theme="dark"] #contact form label {
+    color: var(--cyber-dark-text);
+}
+body[data-bs-theme="dark"] #contact form .form-control {
+    background-color: rgba(204, 214, 246, 0.1); /* Lighter input bg on dark */
+    border-color: rgba(204, 214, 246, 0.3);
+    color: var(--cyber-dark-text);
+}
+body[data-bs-theme="dark"] #contact form .form-control::placeholder {
+    color: rgba(204, 214, 246, 0.6);
+}
+body[data-bs-theme="dark"] #contact form .form-control:focus {
+    background-color: rgba(204, 214, 246, 0.2);
+    border-color: var(--cyber-accent-color);
+    box-shadow: 0 0 0 0.25rem rgba(from-var(--cyber-accent-color), green(var(--cyber-accent-color)), blue(var(--cyber-accent-color)), 0.25);
+}
+body[data-bs-theme="dark"] #contact form button[type="submit"] {
+    background-color: var(--cyber-accent-color);
+    color: var(--cyber-dark-bg); /* Dark text on accent button */
+}
+body[data-bs-theme="dark"] #contact form button[type="submit"]:hover {
+    background-color: lighten(var(--cyber-accent-color), 10%);
+}
+body[data-bs-theme="dark"] footer {
+    background-color: var(--cyber-dark-bg); /* Match main dark bg */
+}
+body[data-bs-theme="dark"] footer p,
+body[data-bs-theme="dark"] footer .footer-social-links a,
+body[data-bs-theme="dark"] footer a {
+    color: rgba(204, 214, 246, 0.7);
+}
+body[data-bs-theme="dark"] footer .footer-social-links a:hover,
+body[data-bs-theme="dark"] footer a:hover {
+    color: var(--cyber-accent-color);
+}
+
+/* --- PENTESTER VIEW THEME --- */
+body[data-pentester-view="true"] {
+    --primary-color: #ff0000; /* Red team red! */
+    --secondary-color: #ff4d4d;
+    --text-color: #f8f9fa;
+    --heading-color: #ffcccc;
+    --background-color: #1a0000;
+    --card-bg-color: #330000;
+    --border-color: #4d0000;
+    --cyber-accent-color: #ff6600; /* Orange accent */
+    --terminal-text: #ff0000;
+}
+/* Add more specific overrides for pentester view if needed */
+body[data-pentester-view="true"] #hero {
+     background: linear-gradient(rgba(50, 0, 0, 0.75), rgba(30, 0, 0, 0.85)), url('images/hero-background-pentester.jpg'); /* Optional: different hero bg */
+     background-size: cover;
+     background-position: center center;
+     background-attachment: fixed;
+}
+body[data-pentester-view="true"] .section-title::after {
+    background: var(--primary-color);
+}
+body[data-pentester-view="true"] .navbar-dark .navbar-nav .nav-link:hover::before,
+body[data-pentester-view="true"] .navbar-dark .navbar-nav .nav-link.active::before {
+    background-color: var(--primary-color);
+}
+
 
 /* Sections */
 section {
     padding: 80px 0;
     overflow-x: hidden;
-    /* Prevent horizontal scroll from AOS */
 }
 
 .section-title {
-    font-weight: 700;
+    font-weight: 700; /* Poppins 700 */
+    font-size: 2.5rem; /* Slightly larger */
     margin-bottom: 4rem;
     position: relative;
-    padding-bottom: 15px;
-    color: #212529;
+    padding-bottom: 20px; /* Increased padding */
+    color: var(--heading-color);
+    text-transform: uppercase; /* Optional: uppercase titles */
+    letter-spacing: 1px; /* Optional: letter spacing */
 }
 
-/* Underline effect for section titles */
 .section-title::after {
     content: '';
     position: absolute;
     display: block;
-    width: 60px;
-    height: 3px;
-    background: var(--bs-primary);
-    /* Bootstrap primary color */
+    width: 80px; /* Wider underline */
+    height: 4px; /* Thicker underline */
+    background: var(--primary-color);
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    border-radius: 2px;
-    /* Slightly rounded ends */
+    border-radius: 3px;
+}
+.section-subtitle { /* For subsections like Security Resources, Skill Proficiency etc. */
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--heading-color);
+    margin-bottom: 2rem;
 }
 
-/* White title underline for dark backgrounds */
-#contact .section-title {
-    color: #fff;
-}
-
-#contact .section-title::after {
-    background: #fff;
-}
-
-
-/* Navigation Bar */
+/* Navbar */
 #navbar-main {
     transition: background-color 0.4s ease-in-out, padding 0.3s ease-in-out, box-shadow 0.4s ease-in-out;
-    background-color: rgba(33, 37, 41, 0.9);
-    /* Start slightly transparent */
+    background-color: rgba(33, 37, 41, 0.85); /* Start slightly more transparent or themed */
+    padding-top: 10px; /* Initial padding */
+    padding-bottom: 10px;
 }
-
 #navbar-main.scrolled {
-    background-color: #212529;
-    /* Solid dark when scrolled */
+    background-color: var(--dark-color);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding-top: 5px; /* Reduced padding on scroll */
+    padding-bottom: 5px;
 }
-
+.navbar-brand {
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+}
+.navbar-brand .logo-icon { /* If using SVG logo */
+    height: 30px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+.navbar-brand .terminal-cursor-nav { /* For the cursor next to name */
+    display: inline-block;
+    background-color: var(--cyber-accent-color);
+    width: 8px;
+    height: 1em;
+    margin-left: 2px;
+    animation: blink-hero-cursor 0.8s step-end infinite;
+    vertical-align: text-bottom;
+}
 .navbar-dark .navbar-nav .nav-link {
-    color: rgba(255, 255, 255, 0.8);
-    padding: 0.8rem 1rem;
-    transition: color 0.3s ease;
+    color: rgba(255, 255, 255, 0.85);
+    padding: 0.8rem 1.1rem; /* Slightly more padding */
+    transition: color 0.3s ease, background-color 0.3s ease;
     font-weight: 500;
-    /* Slightly bolder nav links */
     position: relative;
+    border-radius: 4px; /* Subtle rounding for hover effect */
+    margin: 0 2px;
 }
-
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link.active {
     color: #fff;
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle hover background */
 }
-
-/* Optional: Underline effect for active/hover nav link */
+/* Underline effect for active/hover nav link */
 .navbar-dark .navbar-nav .nav-link::before {
     content: "";
     position: absolute;
     width: 0;
-    height: 2px;
-    bottom: 5px;
-    /* Adjust position */
+    height: 3px; /* Thicker underline */
+    bottom: 0px; /* Closer to text */
     left: 50%;
     transform: translateX(-50%);
-    background-color: var(--bs-warning);
-    /* Use a contrasting color */
+    background-color: var(--cyber-accent-color); /* Use cyber accent */
     visibility: hidden;
     transition: all 0.3s ease-in-out;
+    border-radius: 2px;
 }
-
 .navbar-dark .navbar-nav .nav-link:hover::before,
 .navbar-dark .navbar-nav .nav-link.active::before {
     visibility: visible;
-    width: 70%;
-    /* Adjust width of underline */
+    width: 60%;
+}
+.theme-toggle-btn {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
+    border-width: 1px;
+}
+.theme-toggle-btn i {
+    transition: transform 0.3s ease;
+}
+.theme-toggle-btn:hover i {
+    transform: rotate(15deg);
+}
+
+/* Mobile Menu (cyber-mobile-menu) */
+@media (max-width: 991.98px) {
+    .navbar-collapse.cyber-mobile-menu {
+        background-color: var(--dark-color); /* Or your themed dark color */
+        border-top: 1px solid rgba(255,255,255,0.1);
+        margin-top: 10px;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .navbar-collapse.cyber-mobile-menu .navbar-nav {
+        align-items: flex-start !important; /* Align items to left in mobile */
+    }
+    .navbar-collapse.cyber-mobile-menu .nav-item {
+        width: 100%;
+    }
+    .navbar-collapse.cyber-mobile-menu .nav-link {
+        padding: 10px 15px;
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+    .navbar-collapse.cyber-mobile-menu .nav-link.active,
+    .navbar-collapse.cyber-mobile-menu .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.05); /* Lighter hover for dark bg */
+    }
+    .navbar-collapse.cyber-mobile-menu .nav-link::before {
+        display: none; /* Remove underline in mobile menu if preferred */
+    }
+    .navbar-collapse.cyber-mobile-menu .theme-toggle-btn {
+        margin-top: 10px;
+        width: 100%;
+    }
+    .navbar-toggler { /* Style the toggler - maybe a cyber icon? */
+        border-color: rgba(255,255,255,0.3);
+    }
+    .navbar-toggler-icon {
+        /* You can replace this with a custom SVG via background-image */
+    }
 }
 
 
 /* Hero Section */
 #hero {
-    /* Using a less intense gradient */
-    background: linear-gradient(rgba(40, 50, 90, 0.75), rgba(20, 30, 60, 0.85)), url('images/hero-background.jpg');
-    /* Ensure path is correct */
+    background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.9)), url('images/hero-background.jpg') no-repeat center center;
+    /* More modern, darker overlay consistent with cyber theme */
     background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
+    background-attachment: fixed; /* Parallax effect */
     min-height: 100vh;
-    color: #fff;
+    color: #e6f1ff; /* Lighter text for dark bg */
     display: flex;
-    /* Ensure flex properties work */
     align-items: center;
-    /* Vertically center content */
     justify-content: center;
-    /* Horizontally center content */
+    position: relative; /* For particle background positioning */
+    overflow: hidden; /* Important for particle container */
 }
-
-
-/* Hero Section - Dynamic Typing Styles (ADAPTED FROM AI PULSE CONCEPT) */
-#hero-typing-container {
-    /* You can add specific alignment or spacing here if needed,
-       but it will largely inherit from the #hero section's text-center. */
-    /* Ensure it allows for the h1 and cursor to sit correctly. */
+#hero-particles-bg { /* For Particles.js or similar */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Behind content */
 }
-
-#hero-typed-text-output { /* This is the h1 with id="hero-typed-text-output" */
-    min-height: 1.2em; /* Prevents layout jump as text types out, adjust based on your display-4 font size */
-    color: #fff; /* Ensure text is white, matching hero section */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* From your original hero h1 style */
-    /* display-4 and fw-bold classes from HTML will handle font size and weight */
-    display: inline; /* To allow cursor to sit next to it nicely if not a block element */
+#hero .container { /* Ensure content is above particles */
+    position: relative;
+    z-index: 1;
 }
-
-.hero-typing-cursor {
-    display: inline-block;
-    /* Option 1: Block cursor */
-    background-color: #fff; /* Cursor color */
-    width: 3px; /* Slightly thicker cursor for h1 */
-    height: 0.9em; /* Adjust to match cap height of h1 */
-    margin-left: 5px; /* Space from text */
-    /* Option 2: Line cursor (like in AI Pulse)
-    border-left: 3px solid #fff;
-    height: 1em; // Adjust to match text height
-    background-color: transparent; // Ensure no background if using border
-    margin-left: 1px;
-    */
-    animation: blink-hero-cursor 0.75s step-end infinite;
-    vertical-align: baseline; /* Or experiment with 'middle', 'text-bottom' */
-    opacity: 1;
-}
-
-/* Blinking cursor animation */
-@keyframes blink-hero-cursor { /* Renamed to avoid conflict if you had other blink animations */
-    from, to { background-color: transparent; opacity: 1; } /* Or border-color if using border */
-    50% { background-color: #fff; opacity: 1;} /* Or border-color */
-}
-
-/* Responsive adjustments for typed text if needed (match your h1 styles) */
-@media (max-width: 991.98px) {
-    #hero-typed-text-output {
-        font-size: 2.8rem !important; /* Ensure it matches your responsive hero h1 */
-    }
-    .hero-typing-cursor {
-        height: 0.9em; /* Adjust if font size changes dramatically */
-    }
-}
-
-@media (max-width: 767.98px) {
-    #hero-typed-text-output {
-        font-size: 2.2rem !important; /* Ensure it matches your responsive hero h1 */
-        min-height: 1.1em;
-    }
-    .hero-typing-cursor {
-        height: 0.85em; /* Adjust if font size changes dramatically */
-         width: 2px;
-    }
-}
-
-
-
 .profile-picture {
-    width: 150px;
-    /* Increased size */
-    height: 150px;
-    /* Increased size */
+    width: 180px; /* Slightly larger */
+    height: 180px;
     object-fit: cover;
-    border: 5px solid rgba(255, 255, 255, 0.6);
-    /* Slightly thicker border */
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-    /* Subtle glow */
+    border: 6px solid rgba(var(--cyber-accent-color-rgb), 0.6); /* Use RGB of accent for transparency */
+    box-shadow: 0 0 30px rgba(var(--cyber-accent-color-rgb), 0.4); /* Glow with accent color */
 }
-
-#hero h1 {
-    color: #fff;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-    /* Subtle text shadow */
+#hero h1#hero-title-main { /* Targeting the span for name */
+    color: #fff; /* Pure white for main name */
+    text-shadow: 0 0 15px rgba(var(--cyber-accent-color-rgb), 0.5); /* Accent color glow */
+    font-size: 3.5rem;
 }
-
-#hero h2 {
-    color: rgba(255, 255, 255, 0.9);
+#hero .terminal-cursor { /* Shared with navbar-brand */
+    display: inline-block;
+    background-color: var(--cyber-accent-color);
+    width: 10px; /* Wider cursor for h1 */
+    height: 0.8em; /* Adjust to match cap height of h1 */
+    margin-left: 8px;
+    animation: blink-hero-cursor 0.75s step-end infinite;
+    vertical-align: baseline;
 }
-
+@keyframes blink-hero-cursor {
+    from, to { background-color: transparent; }
+    50% { background-color: var(--cyber-accent-color); }
+}
+#hero h2.hero-subtitle {
+    color: var(--cyber-dark-text); /* Subtitle color */
+    font-family: var(--font-monospace); /* Monospace for techy feel */
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    min-height: 1.5em; /* For typing effect stability */
+}
 #hero p.lead {
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(204, 214, 246, 0.85); /* Lighter lead text */
 }
-
-#hero .btn-primary {
-    background-color: var(--bs-warning);
-    /* Example: Use warning color */
-    border-color: var(--bs-warning);
-    color: #212529;
-    /* Dark text on light button */
-    padding: 12px 28px;
-    /* Larger buttons */
+/* Hero Buttons - Themed for Cybersecurity */
+#hero .btn {
+    padding: 14px 32px;
     font-weight: 600;
-    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
-}
-
-#hero .btn-primary:hover {
-    background-color: #ffca2c;
-    /* Slightly lighter warning */
-    border-color: #ffca2c;
-    transform: translateY(-2px);
-}
-
-#hero .btn-outline-light {
-    padding: 12px 28px;
-    font-weight: 600;
+    border-radius: 50px; /* Pill shape */
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     border-width: 2px;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+#hero .btn-primary { /* Main CTA */
+    background-color: var(--cyber-accent-color);
+    border-color: var(--cyber-accent-color);
+    color: var(--cyber-dark-bg); /* Dark text on accent button */
+}
+#hero .btn-primary:hover {
+    background-color: transparent;
+    border-color: var(--cyber-accent-color);
+    color: var(--cyber-accent-color);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(var(--cyber-accent-color-rgb), 0.3);
+}
+#hero .btn-outline-light { /* Secondary CTA */
+    border-color: rgba(204, 214, 246, 0.7);
+    color: rgba(204, 214, 246, 0.9);
+}
+#hero .btn-outline-light:hover {
+    background-color: rgba(204, 214, 246, 0.1);
+    border-color: var(--cyber-accent-color);
+    color: var(--cyber-accent-color);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(var(--cyber-accent-color-rgb), 0.2);
 }
 
-#hero .btn-outline-light:hover {
-    background-color: #fff;
-    color: #333;
-    transform: translateY(-2px);
-}
 
 /* About Section */
-#about .btn-outline-primary {
+#about .btn-outline-primary { /* Resume button */
     margin-top: 20px;
-    font-weight: 500;
-    padding: 10px 25px;
+    font-weight: 600; /* Bolder */
+    padding: 12px 30px;
     border-width: 2px;
+    border-radius: 50px; /* Pill shape */
+    transition: all 0.3s ease;
+}
+#about .btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
+}
+#about p {
+    color: var(--text-color); /* Use theme variable */
+    font-size: 1.05rem; /* Slightly larger for readability */
+}
+/* Security Resources Subsection */
+#security-resources .resource-link {
+    display: block;
+    padding: 20px;
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+    color: var(--text-color);
+}
+#security-resources .resource-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+#security-resources .resource-link i {
+    transition: transform 0.3s ease;
+}
+#security-resources .resource-link:hover i {
+    transform: scale(1.1);
 }
 
-#about p {
-    color: #555;
-    /* Slightly lighter text than default */
-}
 
 /* Skills Section */
 #skills {
-    background-color: #ffffff;
-    /* White background for skills */
+    background-color: var(--background-color); /* Use theme variable */
 }
-
 .skill-card {
-    background-color: #f8f9fa;
-    /* Light grey background for cards */
-    border: 1px solid #e9ecef;
-    /* Subtle border */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px; /* More rounded */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     height: 100%;
-    /* Make cards equal height in a row */
     display: flex;
     flex-direction: column;
+    padding: 2rem; /* More padding */
 }
-
 .skill-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-10px) scale(1.02); /* Added scale */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12) !important;
+    border-left: 5px solid var(--primary-color); /* Accent border on left */
 }
-
 .skill-card .icon {
     margin-bottom: 1.5rem;
-    /* More space below icon */
 }
-
-.skill-card .icon i {
+.skill-card .icon i,
+.skill-card .custom-skill-icon { /* For custom SVGs */
+    font-size: 2.5rem; /* Slightly smaller if custom icons are detailed */
     transition: transform 0.3s ease, color 0.3s ease;
 }
-
-.skill-card:hover .icon i {
-    transform: scale(1.15);
-    color: var(--bs-primary);
-    /* Highlight icon color on hover */
+.skill-card:hover .icon i,
+.skill-card:hover .custom-skill-icon {
+    transform: scale(1.1);
+    color: var(--primary-color); /* Will also apply to SVG if 'currentColor' is used */
 }
-
 .skill-card h4 {
-    color: var(--bs-primary);
-    /* Match heading color */
+    color: var(--heading-color); /* Use theme variable */
+    font-size: 1.25rem;
 }
-
 .skill-card ul {
     margin-bottom: 0;
-    /* Remove default bottom margin */
+    flex-grow: 1; /* Allow ul to grow */
 }
-
 .skill-card ul li {
-    padding: 0.3rem 0;
-    font-size: 0.9rem;
-    color: #6c757d;
+    padding: 0.35rem 0;
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+/* Interactive Skill Charts */
+#interactive-skill-charts canvas {
+    max-width: 100%;
+    /* height: auto !important; /* Let Chart.js handle height or set a fixed one */
+}
+/* Skills Matrix (placeholder styling) */
+#skills-matrix-visualization {
+    /* Add styles for table or heatmap here */
 }
 
-/* Experience Section */
+
+/* Experience Section - Timeline */
 #experience {
-    background-color: #ffffff;
-    /* White background */
+    background-color: var(--background-color);
 }
-
-.experience-item {
+.timeline {
     position: relative;
-    border-left: 3px solid var(--bs-primary);
-    padding-left: 25px;
-    margin-bottom: 2rem;
-    /* Spacing between items */
-    background-color: #f8f9fa;
-    /* Light background for each item */
-    border-radius: 5px;
-    transition: box-shadow 0.3s ease;
+    padding: 20px 0;
+    list-style: none;
 }
-
-.experience-item:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+.timeline::before { /* The central line */
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    margin-left: -1.5px;
+    background-color: var(--border-color);
+    border-radius: 2px;
 }
-
-.experience-item h4 {
-    color: #343a40;
+body[data-bs-theme="dark"] .timeline::before {
+    background-color: var(--border-color);
 }
-
-.experience-item h5 {
+.timeline-item {
+    margin-bottom: 40px;
+    position: relative;
+}
+.timeline-item::before, .timeline-item::after { /* Clearfix */
+    content: " ";
+    display: table;
+}
+.timeline-item::after {
+    clear: both;
+}
+.timeline-icon {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.5rem;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -25px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    z-index: 1;
+    box-shadow: 0 0 0 3px var(--background-color), inset 0 2px 0 rgba(0,0,0,.08), 0 3px 0 4px rgba(0,0,0,.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+body[data-bs-theme="dark"] .timeline-icon {
+    box-shadow: 0 0 0 3px var(--background-color), inset 0 2px 0 rgba(255,255,255,.08), 0 3px 0 4px rgba(255,255,255,.05);
+}
+.timeline-content {
+    padding: 20px 30px;
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    position: relative;
+    width: 45%; /* Each item takes up half width */
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+.timeline-item:nth-child(odd) .timeline-content { /* Items on the right */
+    float: right;
+    margin-right: 2.5%; /* Space from center line */
+}
+.timeline-item:nth-child(odd) .timeline-content::before { /* Arrow pointing left */
+    content: ' ';
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: -15px; /* Position arrow */
+    border: medium solid var(--primary-color);
+    border-width: 10px 15px 10px 0;
+    border-color: transparent var(--primary-color) transparent transparent;
+}
+.timeline-item:nth-child(even) .timeline-content { /* Items on the left */
+    float: left;
+    margin-left: 2.5%; /* Space from center line */
+}
+.timeline-item:nth-child(even) .timeline-content::before { /* Arrow pointing right */
+    content: ' ';
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: -15px; /* Position arrow */
+    border: medium solid var(--primary-color);
+    border-width: 10px 0 10px 15px;
+    border-color: transparent transparent transparent var(--primary-color);
+}
+.timeline-date {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+    margin-bottom: 8px;
+}
+.timeline-content h4 {
+    margin-top: 0;
+    color: var(--heading-color);
+    font-size: 1.3rem;
+}
+.timeline-content h5 {
     font-size: 1.1rem;
     margin-bottom: 0.5rem !important;
+    color: var(--primary-color);
 }
-
-.experience-item p.text-muted i {
-    color: var(--bs-primary);
-    /* Icon color */
-}
-
-.experience-item ul {
+.timeline-content ul {
     padding-left: 1.2rem;
-    /* Indent list items */
     list-style: disc;
-    /* Use standard bullets */
+    font-size: 0.9rem;
 }
-
-.experience-item ul li {
+.timeline-content ul li {
     margin-bottom: 0.4rem;
-    color: #555;
+    color: var(--text-color);
+}
+/* Responsive Timeline */
+@media (max-width: 767.98px) {
+    .timeline::before {
+        left: 25px; /* Move line to left */
+    }
+    .timeline-item .timeline-icon {
+        left: 25px; /* Align icon with line */
+    }
+    .timeline-content {
+        width: auto; /* Full width */
+        float: none !important; /* Override floats */
+        margin-left: 70px !important; /* Space for icon and line */
+        margin-right: 0 !important;
+    }
+    .timeline-item:nth-child(odd) .timeline-content::before,
+    .timeline-item:nth-child(even) .timeline-content::before {
+        left: -15px; /* All arrows point left */
+        right: auto;
+        border-width: 10px 15px 10px 0;
+        border-color: transparent var(--primary-color) transparent transparent;
+    }
 }
 
 /* Projects Section */
 #projects {
-    background-color: #e9ecef;
-    /* Slightly darker background for projects */
+    background-color: var(--light-color); /* A slightly off-white, good for cards */
 }
-
 .project-card {
-    /* transition: transform 0.3s ease, box-shadow 0.3s ease; */ /* This was from your original */
     overflow: hidden;
-    /* Prevent content overflow on transform */
-    border: 1px solid transparent; /* Prepare for border change on hover, removed default card border */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out; /* Combined transitions */
+    border: 1px solid var(--border-color);
+    border-radius: 8px; /* More rounded */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    cursor: pointer; /* Indicate clickable for modal */
 }
-
 .project-card:hover {
-    transform: translateY(-10px); /* Kept your preferred translateY */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important; /* Kept your preferred shadow */
-    border-color: var(--bs-primary); /* Added from snippet for hover border */
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.15) !important;
+    border-color: var(--primary-color);
 }
-
-.project-card .card-img-top { /* Combined image styles */
-    height: 200px; /* Or your desired height - from snippet */
-    object-fit: cover; /* Ensures image covers - from snippet */
-    width: 100%; /* Ensures image spans card width - from snippet */
-    filter: brightness(95%); /* From your original */
-    transition: filter 0.4s ease, transform 0.4s ease; /* From your original, added transform from snippet */
+.project-card .card-img-top {
+    height: 220px; /* Consistent image height */
+    object-fit: cover;
+    width: 100%;
+    filter: brightness(90%) contrast(110%); /* Subtle image enhancement */
+    transition: filter 0.4s ease, transform 0.4s ease;
 }
-
 .project-card:hover .card-img-top {
-    filter: brightness(100%); /* From your original */
-    transform: scale(1.05); /* Combined slight zoom effect from both */
+    filter: brightness(100%) contrast(100%);
+    transform: scale(1.08); /* Slightly more zoom */
 }
-
 .project-card .card-body {
-    background-color: #fff;
+    background-color: var(--card-bg-color);
     display: flex;
     flex-direction: column;
+    padding: 1.5rem; /* More padding */
 }
-
 .project-card .card-title {
-    color: var(--bs-primary);
+    color: var(--heading-color);
+    font-size: 1.2rem;
 }
-
 .project-card .card-text {
     font-size: 0.9rem;
-    color: #6c757d;
+    color: var(--text-color);
     flex-grow: 1;
-    /* Make text take available space */
 }
-
-.project-card .badge {
+.project-card .project-tags .badge {
     font-size: 0.75rem;
-    padding: 0.3em 0.6em;
+    padding: 0.4em 0.7em;
     margin-bottom: 0.3rem;
-    /* Add spacing below badges if they wrap */
+    margin-right: 0.3rem;
+    font-weight: 500;
+    border-radius: 4px; /* Rounded badges */
+}
+/* Specific badge colors for better theme consistency */
+.project-card .project-tags .badge.bg-primary { background-color: var(--primary-color) !important; }
+.project-card .project-tags .badge.bg-success { background-color: #198754 !important; }
+.project-card .project-tags .badge.bg-danger { background-color: #dc3545 !important; }
+.project-card .project-tags .badge.bg-info { background-color: #0dcaf0 !important; color: #000 !important; }
+.project-card .project-tags .badge.bg-warning { background-color: #ffc107 !important; color: #000 !important; }
+.project-card .project-tags .badge.bg-secondary { background-color: var(--secondary-color) !important; }
+.project-card .project-tags .badge.bg-dark { background-color: var(--dark-color) !important; }
+
+.project-card .project-links .btn {
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 50px; /* Pill shape */
+}
+.project-card .project-links .btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: #fff;
 }
 
-.project-card .btn {
-    font-size: 0.85rem;
-    font-weight: 500;
-}
 
 /* Education Section */
 #education {
-    background-color: #ffffff;
-    /* White background */
+    background-color: var(--background-color);
 }
-
 .education-item {
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
     height: 100%;
-    /* Ensure cards align nicely */
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    padding: 1.5rem;
 }
-
 .education-item:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transform: translateY(-5px);
 }
-
-.education-item h4,
-.education-item h5 {
-    color: #343a40;
+.education-item.main-education { /* For the BSc degree */
+    border-left: 5px solid var(--primary-color);
 }
-
+.education-item .education-icon i { /* For the graduation cap */
+    margin-bottom: 1rem !important;
+}
+.education-item h4, .education-item h5 {
+    color: var(--heading-color);
+}
 .education-item i.fa-calendar-alt {
-    color: var(--bs-primary);
+    color: var(--primary-color);
 }
-
 .education-item ul {
     margin-top: 0.5rem;
 }
-
 .education-item ul li {
     font-size: 0.9rem;
-    margin-bottom: 0.2rem;
-    color: #555;
+    margin-bottom: 0.3rem;
+    color: var(--text-color);
+}
+.education-item ul li i {
+    width: 20px;
+    text-align: center;
+    margin-right: 8px;
+}
+.verification-badge { /* For certification verification hint */
+    cursor: help; /* Indicate more info on hover/click */
+    margin-left: 5px;
+}
+.verification-badge i {
+    font-size: 0.8em;
 }
 
-.education-item ul li i {
-    /* Icons within lists */
-    width: 20px;
-    /* Align icons */
-    text-align: center;
-    margin-right: 5px;
-    /* Space after icon */
+
+/* Interactive Demos Section */
+#interactive-demos {
+    background-color: var(--cyber-dark-bg); /* Consistent dark theme for demos */
 }
+#interactive-demos .section-title {
+    color: var(--cyber-dark-heading);
+}
+#interactive-demos .section-title::after {
+    background: var(--cyber-accent-color);
+}
+.interactive-demo-card {
+    background-color: rgba(17, 34, 64, 0.7); /* Slightly transparent card on dark bg */
+    border: 1px solid var(--border-color); /* Use dark theme border */
+    backdrop-filter: blur(5px); /* Glassmorphism effect */
+    border-radius: 8px;
+}
+body[data-bs-theme="dark"] .interactive-demo-card { /* Ensure dark mode uses its specific vars */
+    background-color: rgba(from-var(--card-bg-color), green(var(--card-bg-color)), blue(var(--card-bg-color)), 0.7);
+    border: 1px solid var(--border-color);
+}
+.interactive-demo-card h4 {
+    color: var(--cyber-accent-color);
+}
+.interactive-demo-card p {
+    color: var(--cyber-dark-text);
+}
+/* Vulnerability Scanner Demo */
+#vulnScanInput {
+    background-color: rgba(0,0,0,0.3);
+    color: var(--cyber-dark-text);
+    border-color: rgba(var(--cyber-accent-color-rgb), 0.5);
+    font-family: var(--font-monospace);
+}
+#vulnScanInput::placeholder { color: rgba(var(--cyber-dark-text-rgb), 0.5); }
+#vulnScanInput:focus {
+    background-color: rgba(0,0,0,0.5);
+    border-color: var(--cyber-accent-color);
+    box-shadow: 0 0 0 0.2rem rgba(var(--cyber-accent-color-rgb), 0.25);
+}
+#vulnScanButton {
+    background-color: var(--cyber-accent-color);
+    border-color: var(--cyber-accent-color);
+    color: var(--cyber-dark-bg);
+}
+#vulnScanButton:hover {
+    background-color: lighten(var(--cyber-accent-color), 10%);
+    border-color: lighten(var(--cyber-accent-color), 10%);
+}
+#vulnScanResults {
+    background-color: rgba(0,0,0,0.7) !important; /* Override Bootstrap */
+    border: 1px dashed rgba(var(--cyber-accent-color-rgb), 0.3);
+    color: var(--terminal-text); /* Classic green terminal text */
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+/* Mini Terminal */
+#miniTerminal {
+    background-color: var(--terminal-bg) !important; /* Override Bootstrap */
+    color: var(--terminal-text);
+    border: 1px solid rgba(var(--terminal-text-rgb), 0.3); /* Greenish border */
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+#terminalOutput p {
+    margin-bottom: 0.5em;
+    color: var(--terminal-text); /* Ensure terminal text color */
+}
+.terminal-prompt-line {
+    display: flex;
+    align-items: center;
+}
+.terminal-prompt {
+    color: var(--terminal-prompt-color); /* Blueish prompt */
+    white-space: nowrap;
+}
+.terminal-input-field {
+    background: transparent;
+    border: none;
+    color: var(--terminal-text);
+    font-family: var(--font-monospace);
+    outline: none;
+    flex-grow: 1;
+    padding: 0;
+    caret-color: var(--terminal-text); /* Make caret visible */
+}
+#miniTerminal code { /* For help commands */
+    color: var(--cyber-accent-color);
+    background-color: rgba(var(--cyber-accent-color-rgb), 0.1);
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
 
 /* Contact Section */
-#contact {
-    background-color: var(--bs-primary);
+#contact.contact-section-bg {
+    /* You can use a subtle texture or a slightly different shade */
+    background-color: var(--background-color); /* Default light mode */
 }
-
+#contact .section-title { /* Overrides for contact on light bg */
+    color: var(--heading-color);
+}
+#contact .section-title::after {
+    background: var(--primary-color);
+}
 #contact p.lead {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-color);
 }
-
-#contact .btn-outline-light {
-    border-width: 2px;
-    font-weight: 500;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+#rotating-security-tip {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-left: 5px solid var(--primary-color); /* Accent line */
 }
-
-#contact .btn-outline-light:hover {
-    background-color: #fff;
-    color: var(--bs-primary);
-    transform: translateY(-2px);
+#rotating-security-tip h5 .fa-lightbulb {
+    color: #ffc107; /* Warning color for lightbulb */
 }
-
-#contact .contact-links a {
-    /* Ensure buttons wrap nicely */
+#contact .contact-links a.btn { /* Your existing styles were good, just ensure variables */
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    padding: 10px 25px;
+}
+#contact .contact-links .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+}
+#contact .contact-links .btn-primary:hover {
+    background-color: darken(var(--primary-color), 8%);
+    border-color: darken(var(--primary-color), 8%);
+}
+#contact .contact-links .btn-outline-primary {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+#contact .contact-links .btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+#contact .contact-links .btn-outline-secondary {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+#contact .contact-links .btn-outline-secondary:hover {
+    background-color: var(--secondary-color);
+    color: #fff;
 }
 
-/* Styling for the contact form */
+/* Contact Form Styling (for light background) */
 #contact form label {
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 500;
+    color: var(--heading-color); /* Darker labels on light bg */
+    font-weight: 600;
     margin-bottom: 0.5rem;
-    /* Add space below labels */
 }
-
 #contact form .form-control {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #fff;
+    background-color: #fff; /* White inputs on light bg */
+    border: 1px solid #ced4da; /* Standard Bootstrap border */
+    color: var(--text-color);
     transition: background-color 0.3s ease, border-color 0.3s ease;
-    padding: 0.75rem 1rem;
-    /* Adjust padding */
+    padding: 0.85rem 1.1rem; /* Consistent padding */
+    border-radius: 0.375rem; /* Bootstrap's default */
 }
-
 #contact form .form-control::placeholder {
-    color: rgba(255, 255, 255, 0.6);
+    color: #6c757d; /* Standard placeholder color */
 }
-
 #contact form .form-control:focus {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-color: #fff;
-    color: #fff;
-    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
-    /* Custom focus ring */
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(from-var(--primary-color), green(var(--primary-color)), blue(var(--primary-color)), 0.25);
 }
-
 #contact form textarea.form-control {
     min-height: 150px;
-    /* Ensure textarea is reasonably tall */
 }
-
-#contact form button[type="submit"] {
-    background-color: #fff;
-    color: var(--bs-primary);
+#contact form button[type="submit"].btn-xl { /* Use this class for large send button */
+    background-color: var(--primary-color);
+    color: #fff;
     font-weight: 600;
-    padding: 12px 35px;
-    /* Slightly larger button */
+    padding: 14px 40px;
     border: none;
     border-radius: 50px;
-    /* Pill shape */
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
-
-#contact form button[type="submit"]:hover {
-    background-color: #e9ecef;
-    /* Slightly off-white hover */
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+#contact form button[type="submit"].btn-xl:hover {
+    background-color: darken(var(--primary-color), 10%);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 5px 15px rgba(from-var(--primary-color), green(var(--primary-color)), blue(var(--primary-color)), 0.3);
+}
+/* Form message styling */
+#form-message {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+#form-message.success {
+    color: #198754; /* Green for success */
+    border: 1px solid #198754;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: rgba(25, 135, 84, 0.1);
+}
+#form-message.error {
+    color: #dc3545; /* Red for error */
+    border: 1px solid #dc3545;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: rgba(220, 53, 69, 0.1);
 }
 
 
 /* Footer */
 footer {
-    background-color: #212529;
+    background-color: var(--dark-color); /* Consistent dark footer */
 }
-
 footer p {
     margin-bottom: 0;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.75);
 }
-
 footer .footer-social-links a {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.75);
     transition: color 0.3s ease, transform 0.2s ease;
     display: inline-block;
-    /* Needed for transform */
 }
-
 footer .footer-social-links a:hover {
-    color: #fff;
-    transform: scale(1.1);
-    /* Slight scale effect */
+    color: var(--cyber-accent-color); /* Accent hover for social links */
+    transform: scale(1.15) translateY(-2px);
+}
+footer .text-white-50 { color: rgba(255,255,255,0.6) !important; }
+footer .text-white-50:hover { color: rgba(255,255,255,0.9) !important; }
+
+
+/* Project Modal */
+.modal-content {
+    background-color: var(--card-bg-color); /* Use theme variable */
+    border-radius: 10px;
+    border: none; /* Remove default modal border if any */
+}
+body[data-bs-theme="dark"] .modal-content {
+    border: 1px solid var(--border-color);
+}
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+}
+.modal-title {
+    color: var(--heading-color);
+    font-weight: 600;
+}
+.modal-body {
+    color: var(--text-color);
+    line-height: 1.8;
+}
+.modal-body img.img-fluid { /* For images within modal */
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.modal-body h3 {
+    color: var(--primary-color);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+.modal-footer {
+    border-top: 1px solid var(--border-color);
+}
+.modal-footer .btn-primary { /* If you add a primary button to modal footer */
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Utility Classes (add as needed) */
+.section-bg-pattern {
+    /* background-image: url('images/subtle-pattern.svg'); */ /* Example for pattern */
+    /* background-repeat: repeat; */
 }
 
 
-/* Responsive Adjustments */
-@media (max-width: 991.98px) {
+/* Responsive Adjustments (Consolidated and enhanced) */
+@media (max-width: 991.98px) { /* Tablets and larger phones */
+    section {
+        padding: 70px 0;
+    }
+    .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 3rem;
+    }
+    #hero h1#hero-title-main {
+        font-size: 2.8rem;
+    }
+    #hero h2.hero-subtitle {
+        font-size: 1.2rem;
+    }
+    .profile-picture {
+        width: 150px;
+        height: 150px;
+    }
+    /* Navbar adjustments already handled by cyber-mobile-menu specific styles */
+}
+
+@media (max-width: 767.98px) { /* Small phones */
     section {
         padding: 60px 0;
     }
-
     .section-title {
-        margin-bottom: 3rem;
+        font-size: 1.8rem;
+        margin-bottom: 2.5rem;
     }
-
-    #hero h1 {
-        font-size: 2.8rem;
+    .section-title::after {
+        width: 60px;
+        height: 3px;
     }
-
-    #hero h2 {
-        font-size: 1.3rem;
+    #hero {
+        min-height: auto;
+        padding: 100px 0 60px 0;
+        background-attachment: scroll; /* Disable parallax for performance */
     }
-
+    #hero h1#hero-title-main {
+        font-size: 2.2rem;
+    }
+    #hero h2.hero-subtitle {
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+    }
     .profile-picture {
         width: 120px;
         height: 120px;
+        border-width: 4px;
     }
-
-    .navbar-nav {
-        background-color: #212529;
-        /* Add background to collapsed nav */
-        padding: 1rem 0;
-        margin-top: 0.5rem;
-        /* Space between toggle and menu */
-        border-radius: 0.25rem;
+    #hero .btn {
+        font-size: 0.9rem;
+        padding: 12px 25px;
+        /* display: block; No, let them be inline-block and wrap if needed */
+        margin: 5px; /* Allow them to wrap with some space */
     }
-
-    .navbar-dark .navbar-nav .nav-link {
-        padding: 0.7rem 1rem;
-        text-align: center;
+    #hero .btn-lg.me-sm-2 { /* Adjust Bootstrap classes */
+        margin-right: 0 !important;
     }
-
-    .navbar-dark .navbar-nav .nav-link::before {
-        bottom: 2px;
-        /* Adjust underline position for centered text */
+    .skill-card {
+        margin-bottom: 1.5rem; /* Stack nicely */
+        padding: 1.5rem;
     }
+    .skill-card:hover {
+        transform: translateY(-5px) scale(1.01);
+    }
+    .contact-links a.btn {
+        display: block;
+        margin: 0 auto 1rem auto;
+        max-width: 300px;
+    }
+    #contact form .form-control-lg { /* Ensure these are not overly large */
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+    }
+    #contact form button[type="submit"].btn-xl {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+    .timeline-content { /* Responsive timeline adjustments */
+        margin-left: 70px !important;
+        padding: 15px 20px;
+    }
+    .timeline-content h4 { font-size: 1.1rem; }
 }
 
-@media (max-width: 767.98px) {
-    #hero {
-        min-height: auto;
-        padding: 120px 0 80px 0;
-        /* Adjust padding for smaller screens */
-        background-attachment: scroll;
-        /* Disable parallax on mobile for performance */
+@media (max-width: 575.98px) { /* Extra small devices */
+    #hero h1#hero-title-main {
+        font-size: 1.8rem;
     }
-
-    #hero h1 {
-        font-size: 2.2rem;
-    }
-
-    #hero h2 {
-        font-size: 1.1rem;
-    }
-
     .profile-picture {
         width: 100px;
         height: 100px;
     }
+}
 
-    #hero .btn {
-        font-size: 0.9rem;
-        padding: 0.8rem 1.5rem;
-        display: block;
-        /* Stack buttons */
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 250px;
-        /* Limit button width */
-    }
+/* Accessibility: Focus Visible for keyboard navigation */
+:focus-visible {
+  outline: 3px solid var(--primary-color) !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px rgba(from-var(--primary-color), green(var(--primary-color)), blue(var(--primary-color)), 0.3) !important;
+  border-radius: 2px;
+}
+/* For elements that shouldn't have the default Bootstrap focus (like form inputs that have their own) */
+.form-control:focus-visible {
+  outline: none !important; /* We have custom focus for form controls */
+  /* box-shadow already handled by BS or custom styles */
+}
 
-    #hero .btn:last-child {
-        margin-top: 1rem;
-        /* Space between stacked buttons */
-    }
 
-    .skill-card {
-        margin-bottom: 1.5rem;
-    }
-
-    .contact-links a.btn {
-        /* Target only buttons */
-        display: block;
-        /* Stack contact buttons */
-        margin: 0 auto 1rem auto;
-        /* Center and space */
-        max-width: 280px;
-    }
-
-    #contact .btn-outline-light {
-        margin-right: auto !important;
-        /* Ensure centering works */
-        margin-left: auto !important;
-    }
-
-    #contact form .form-control-lg {
-        /* Reduce size on mobile */
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-    }
-
-    #contact form button[type="submit"] {
-        padding: 10px 30px;
-        font-size: 1rem;
-    }
+/* Lazy Loading Placeholder (Optional, if JS adds a class) */
+img[loading="lazy"] {
+    /* Could add a subtle transition once loaded */
+    /* opacity: 0; */
+    /* transition: opacity 0.5s ease-in-out; */
+}
+img.loaded { /* Add this class with JS when image is loaded */
+    /* opacity: 1; */
 }
