@@ -1,4 +1,4 @@
-# Vincent Omondi - Cybersecurity & Cloud Specialist Portfolio v2.0
+# Vincent Omondi - Cybersecurity , softrware engineer & Cloud Specialist Portfolio v2.0
 
 Welcome to the repository for my personal portfolio website (v2.0)! This site is designed to showcase my skills, experience, and projects as a Cybersecurity Specialist, Cloud Security Engineer, and Software Developer. This version represents a significant overhaul, focusing on a modern, dynamic, and interactive user experience.
 
