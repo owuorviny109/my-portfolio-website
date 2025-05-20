@@ -1,0 +1,54 @@
+<div class="resource-article-content container py-5">
+    <button class="btn btn-outline-secondary btn-sm mb-4 back-to-about-button" data-target-section="#about">
+        <i class="fas fa-arrow-left me-2"></i> Back to About
+    </button>
+
+    <h1 class="mb-4 section-title text-center">Cloud Security Best Practices</h1>
+    <!-- Optional: <img src="assets/resource-banner-cloud-security.jpg" alt="Cloud Security Banner" class="img-fluid rounded mb-4 shadow-sm"> -->
+
+    <article>
+        <p class="lead">Securing workloads and data in the cloud requires a shared responsibility model and adherence to best practices. While cloud providers secure the underlying infrastructure, customers are responsible for securing what they put *in* the cloud.</p>
+
+        <h2 class="mt-5 mb-3 section-subtitle">Key Cloud Security Principles:</h2>
+        <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item"><strong>Identity and Access Management (IAM):</strong> Implement strong authentication and authorization. Use the principle of least privilege. Regularly review permissions.</li>
+            <li class="list-group-item"><strong>Data Protection:</strong> Encrypt data at rest and in transit. Classify your data and apply appropriate controls. Manage encryption keys securely.</li>
+            <li class="list-group-item"><strong>Infrastructure Security:</strong> Secure your virtual networks (VPCs/VNets) with security groups, network ACLs, and firewalls. Implement Intrusion Detection/Prevention Systems (IDS/IPS).</li>
+            <li class="list-group-item"><strong>Logging and Monitoring:</strong> Enable comprehensive logging for all cloud services. Monitor logs for suspicious activity and set up alerts. Utilize cloud-native security monitoring tools.</li>
+            <li class="list-group-item"><strong>Secure DevOps (DevSecOps):</strong> Integrate security into your CI/CD pipeline. Perform security testing (SAST, DAST, IAST) throughout the development lifecycle.</li>
+            <li class="list-group-item"><strong>Incident Response Plan:</strong> Develop and test an incident response plan specifically for cloud environments.</li>
+            <li class="list-group-item"><strong>Configuration Management:</strong> Use Infrastructure as Code (IaC) tools like Terraform or CloudFormation to manage configurations and prevent drift. Regularly audit configurations.</li>
+            <li class="list-group-item"><strong>Compliance and Governance:</strong> Understand and adhere to relevant compliance standards (e.g., PCI DSS, HIPAA, GDPR). Use cloud provider tools for compliance reporting.</li>
+        </ul>
+
+        <h2 class="mt-5 mb-3 section-subtitle">Platform-Specific Considerations:</h2>
+        <p>Each major cloud provider (AWS, Azure, GCP) has its own set of security services and recommendations.</p>
+        <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item"><strong>AWS:</strong> IAM, Security Groups, NACLs, S3 bucket policies, KMS, GuardDuty, Security Hub, Config.</li>
+            <li class="list-group-item"><strong>Azure:</strong> Azure Active Directory, Network Security Groups (NSGs), Azure Firewall, Azure Key Vault, Microsoft Defender for Cloud, Azure Policy.</li>
+            <li class="list-group-item"><strong>GCP:</strong> Cloud IAM, VPC Firewall Rules, Cloud Armor, Key Management Service, Security Command Center, Forseti Security.</li>
+        </ul>
+
+        <h2 class="mt-5 mb-3 section-subtitle">Further Reading & External Links:</h2>
+        <div class="list-group">
+            <a href="https://aws.amazon.com/security/partner-security-best-practices/" target="_blank" rel="noopener noreferrer" class="list-group-item list-group-item-action">
+                AWS Security Best Practices <i class="fas fa-external-link-alt fa-xs ms-1"></i>
+            </a>
+            <a href="https://docs.microsoft.com/en-us/azure/security/fundamentals/best-practices-and-patterns" target="_blank" rel="noopener noreferrer" class="list-group-item list-group-item-action">
+                Azure security best practices and patterns <i class="fas fa-external-link-alt fa-xs ms-1"></i>
+            </a>
+            <a href="https://cloud.google.com/docs/enterprise/best-practices-for-enterprise-organizations" target="_blank" rel="noopener noreferrer" class="list-group-item list-group-item-action">
+                Google Cloud security best practices <i class="fas fa-external-link-alt fa-xs ms-1"></i>
+            </a>
+            <a href="https://www.cisecurity.org/cis-benchmarks/" target="_blank" rel="noopener noreferrer" class="list-group-item list-group-item-action">
+                CIS Benchmarks (for secure configuration) <i class="fas fa-external-link-alt fa-xs ms-1"></i>
+            </a>
+        </div>
+    </article>
+
+    <div class="text-center mt-5">
+        <button class="btn btn-primary back-to-about-button" data-target-section="#about">
+             Back to About Me
+        </button>
+    </div>
+</div>

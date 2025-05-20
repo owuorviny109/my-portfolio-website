@@ -1,0 +1,56 @@
+<!-- Contact Section -->
+<section id="contact" class="page-section py-5 contact-section-bg">
+    <div class="container" data-aos="fade-up">
+        <h2 class="text-center mb-4 section-title">Let's Connect</h2>
+        <p class="lead text-center col-lg-8 mx-auto mb-5">
+            Actively seeking opportunities in cybersecurity, cloud security, and IT. Have a project, question, or just want to talk tech? Reach out!
+        </p>
+
+        <div id="rotating-security-tip" class="text-center mb-5 p-3 bg-light border rounded shadow-sm" data-aos="flip-up">
+            <h5 class="fw-semibold mb-2"><i class="fas fa-lightbulb me-2 text-warning"></i>Security Tip:</h5>
+            <p id="securityTipText" class="fst-italic text-muted">Enable Two-Factor Authentication (2FA) on all your critical accounts.</p>
+        </div>
+
+        <div class="text-center contact-links mb-5">
+            <a href="mailto:owuorvincent069@gmail.com" class="btn btn-primary btn-lg me-md-2 mb-2 mb-md-0">
+                <i class="fas fa-envelope me-2"></i> Email Me
+            </a>
+            <a href="https://www.linkedin.com/in/owuor-vincent-38b2b02ba/" target="_blank" rel="noopener noreferrer"
+                class="btn btn-outline-primary btn-lg me-md-2 mb-2 mb-md-0">
+                <i class="fab fa-linkedin me-2"></i> LinkedIn
+            </a>
+            <a href="https://github.com/owuorviny109" target="_blank" rel="noopener noreferrer"
+                class="btn btn-outline-secondary btn-lg mb-2 mb-md-0">
+                <i class="fab fa-github me-2"></i> GitHub
+            </a>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h4 class="text-center mb-4 section-subtitle">Or Send a Quick Message</h4>
+                <form id="contactForm" action="YOUR_FORM_ENDPOINT_HERE" method="POST"> <!-- Ensure endpoint is set for your form processor -->
+                    <div class="mb-3">
+                        <label for="contactName" class="form-label">Name</label>
+                        <input type="text" class="form-control form-control-lg" id="contactName" name="name" aria-label="Your Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control form-control-lg" id="contactEmail" name="email" aria-label="Your Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactSubject" class="form-label">Subject</label>
+                        <input type="text" class="form-control form-control-lg" id="contactSubject" name="subject" aria-label="Message Subject">
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactMessage" class="form-label">Message</label>
+                        <textarea class="form-control form-control-lg" id="contactMessage" name="message" rows="5" aria-label="Your Message" required></textarea>
+                    </div>
+                    <div id="form-message" class="mb-3"></div> <!-- For success/error messages -->
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-xl"><i class="fas fa-paper-plane me-2"></i>Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,59 @@
+<div class="resource-article-content container py-5">
+    <button class="btn btn-outline-secondary btn-sm mb-4 back-to-about-button" data-target-section="#about">
+        <i class="fas fa-arrow-left me-2"></i> Back to About
+    </button>
+
+    <h1 class="mb-4 section-title text-center">Introduction to Threat Modeling</h1>
+    <!-- Optional: <img src="assets/resource-banner-threat-modeling.jpg" alt="Threat Modeling Banner" class="img-fluid rounded mb-4 shadow-sm"> -->
+
+    <article>
+        <p class="lead">Threat modeling is a proactive approach to security where potential threats are identified, enumerated, and prioritized – all from a hypothetical attacker’s point of view. It helps in understanding how an attacker might be able to compromise a system and what defenses are needed.</p>
+
+        <h2 class="mt-5 mb-3 section-subtitle">Why is Threat Modeling Important?</h2>
+        <p>By systematically analyzing your applications, systems, or processes, threat modeling allows you to:</p>
+        <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item">Identify vulnerabilities early in the development lifecycle.</li>
+            <li class="list-group-item">Prioritize security efforts and resource allocation.</li>
+            <li class="list-group-item">Make informed decisions about security controls.</li>
+            <li class="list-group-item">Reduce the overall attack surface and potential impact of breaches.</li>
+            <li class="list-group-item">Foster a security-aware culture within development teams.</li>
+        </ul>
+
+        <h2 class="mt-5 mb-3 section-subtitle">Common Threat Modeling Methodologies:</h2>
+        <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item"><strong>STRIDE:</strong> Focuses on Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, and Elevation of Privilege.</li>
+            <li class="list-group-item"><strong>PASTA:</strong> Process for Attack Simulation and Threat Analysis. A risk-centric methodology.</li>
+            <li class="list-group-item"><strong>VAST:</strong> Visual, Agile, and Simple Threat modeling.</li>
+            <li class="list-group-item"><strong>OCTAVE:</strong> Operationally Critical Threat, Asset, and Vulnerability Evaluation.</li>
+        </ul>
+        <p>The choice of methodology often depends on the context, complexity of the system, and team familiarity.</p>
+
+        <h2 class="mt-5 mb-3 section-subtitle">Basic Steps in Threat Modeling:</h2>
+        <ol class="list-group list-group-numbered list-group-flush mb-4">
+            <li class="list-group-item"><strong>Define Scope & Assets:</strong> What are you protecting? What are the critical assets?</li>
+            <li class="list-group-item"><strong>Decompose the Application:</strong> Understand the components, data flows, and trust boundaries. Data Flow Diagrams (DFDs) are often used.</li>
+            <li class="list-group-item"><strong>Identify Threats:</strong> Using a methodology (like STRIDE per interaction point) or brainstorming, list potential threats.</li>
+            <li class="list-group-item"><strong>Document & Analyze Threats:</strong> For each threat, assess its likelihood and potential impact.</li>
+            <li class="list-group-item"><strong>Determine Mitigations:</strong> Identify and prioritize controls or changes to reduce or eliminate the threats.</li>
+        </ol>
+
+        <h2 class="mt-5 mb-3 section-subtitle">Further Reading & External Links:</h2>
+        <div class="list-group">
+            <a href="https://owasp.org/www-community/Threat_Modeling" target="_blank" rel="noopener noreferrer" class="list-group-item list-group-item-action">
+                OWASP Threat Modeling Page <i class="fas fa-external-link-alt fa-xs ms-1"></i>
+            </a>
+            <a href="https://docs.microsoft.com/en-us/azure/security/develop/threat-modeling-tool" target="_blank" rel="noopener noreferrer" class="list-group-item list-group-item-action">
+                Microsoft Threat Modeling Tool <i class="fas fa-external-link-alt fa-xs ms-1"></i>
+            </a>
+            <a href="https://adam.shostack.org/blog/2013/10/threat-modeling-stride-pasta-and-vast/" target="_blank" rel="noopener noreferrer" class="list-group-item list-group-item-action">
+                Adam Shostack on Threat Modeling Methodologies <i class="fas fa-external-link-alt fa-xs ms-1"></i>
+            </a>
+        </div>
+    </article>
+
+    <div class="text-center mt-5">
+        <button class="btn btn-primary back-to-about-button" data-target-section="#about">
+             Back to About Me
+        </button>
+    </div>
+</div>
