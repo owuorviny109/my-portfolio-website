@@ -151,13 +151,7 @@ This project is for personal portfolio use.
 For reuse or adaptation, please credit the original author.
 
 ---
-
-## Screenshots
-
-_Add screenshots here if desired (e.g., hero section, skills, projects modal, interactive demos)._
-
----
-
+ 
 ## Contact
 
 - **Email:** owuorvincent069@gmail.com
