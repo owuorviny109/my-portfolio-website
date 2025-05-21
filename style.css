@@ -136,6 +136,7 @@ body[data-pentester-view="true"] #hero { background: linear-gradient(rgba(50, 0,
 body[data-pentester-view="true"] .section-title::after { background: var(--primary-color); }
 body[data-pentester-view="true"] .navbar-dark .navbar-nav .nav-link:hover::before,
 body[data-pentester-view="true"] .navbar-dark .navbar-nav .nav-link.active::before { background-color: var(--primary-color); }
+
 /* Add other pentester-specific overrides as needed */
 
 
@@ -309,9 +310,171 @@ body:not([data-bs-theme="dark"]):not([data-pentester-view="true"]) #about .secti
 
 /* --- EXPERIENCE SECTION (#experience) --- */
 /* Styles for #experience, .timeline, .timeline-item, etc. are largely theme-agnostic using vars */
-#experience { background-color: var(--background-color); }
-.timeline { position: relative; padding: 20px 0; list-style: none; }
-.timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 3px; margin-left: -1.5px; background-color: var(--border-color); border-radius: 2px; }
+ 
+/* --- EXPERIENCE SECTION (#experience) --- */
+#experience {
+    background-color: var(--background-color);
+}
+
+.timeline {
+    position: relative;
+    padding: 30px 0; /* Add some top/bottom padding to the timeline container */
+    list-style: none;
+    margin: 0; /* Remove default list margin */
+    /* max-width: 800px; */ /* Optional: constrain the width of the timeline section */
+    /* margin-left: auto; */   /* Optional: center if max-width is set */
+    /* margin-right: auto; */  /* Optional: center if max-width is set */
+}
+
+/* The vertical timeline line - positioned to the left */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px; /* Position of the line from the left edge of .timeline. Adjust as needed. */
+                /* This should be roughly (icon_width / 2) */
+    width: 3px;
+    /* margin-left: -1.5px; */ /* Not strictly needed if 'left' is fixed and line is thin, but centers it on the 20px mark */
+    margin-left: -1.5px; /* Keep to center 3px line on the 20px mark */
+    background-color: var(--border-color);
+    border-radius: 2px;
+    z-index: 1;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px; /* Space between timeline items */
+    padding-left: 60px;  /* Space for the line, icon, and some gap. Adjust this value:
+                            (line_left_pos + (icon_width/2) + desired_gap_to_content)
+                            e.g., 20px (line) + (40px_icon_width/2=20px) + 20px_gap = 60px */
+}
+.timeline-item:last-child {
+    margin-bottom: 0; /* No margin for the last item */
+}
+
+.timeline-icon {
+    position: absolute;
+    left: 20px;        /* Align the center of the icon with the timeline line's 'left' value */
+    transform: translateX(-50%); /* Horizontally center the icon on the line */
+    top: 0px;          /* Adjust vertical position. 0px aligns top of icon with top of item's text content.
+                           You might prefer a value like 5px or 10px to align with the first line of text. */
+    width: 40px;       /* Width of the icon circle */
+    height: 40px;      /* Height of the icon circle */
+    background-color: var(--background-color); /* Match page background to "punch through" the line */
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10; /* Ensure icon is above the line */
+    color: var(--primary-color); /* Color for the FontAwesome icon itself */
+}
+.timeline-icon i {
+    font-size: 1.1rem; /* Adjust icon font size */
+}
+
+.timeline-content {
+    position: relative;
+    background-color: var(--card-bg-color);
+    padding: 20px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    /* border: 1px solid var(--border-color); /* Optional: if you prefer a bordered look */
+}
+
+/* Arrow pointing from content to the left (towards the icon/line) */
+.timeline-content::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 15px;        /* Adjust vertical alignment to match icon or main heading in content */
+    width: 0;
+    z-index: 1;
+    left: -12px;       /* (-(arrow_width) + small_overlap_if_bordered). Adjust this. */
+    border-style: solid;
+    /* Arrow color matches content background, giving a "cutout" appearance */
+    border-width: 12px 12px 12px 0; /* Creates a left-pointing arrow (adjust size as needed) */
+    border-color: transparent var(--card-bg-color) transparent transparent;
+}
+/* Optional: If you want the arrow to have a border that matches the timeline line or primary color */
+/*
+.timeline-content::after {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 13px; // Slightly offset from ::before for border effect
+    width: 0;
+    z-index: 0; // Behind ::before
+    left: -15px;
+    border-style: solid;
+    border-width: 14px 14px 14px 0;
+    border-color: transparent var(--primary-color) transparent transparent; // Or var(--border-color)
+}
+*/
+
+.timeline-content h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem; /* Add some space below the title */
+    font-size: 1.25rem; /* Adjust title size */
+    color: var(--heading-color);
+}
+.timeline-content h5 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem; /* Space below subtitle */
+    color: var(--primary-color); /* Or var(--secondary-color) */
+}
+.timeline-content ul {
+    margin-bottom: 0;
+    padding-left: 20px; /* Standard ul padding */
+    font-size: 0.95rem;
+}
+.timeline-content ul li {
+    margin-bottom: 0.3rem;
+}
+
+
+/* --- RESPONSIVE ADJUSTMENTS (Mostly inherited, but good to check) --- */
+@media (max-width: 767.98px) {
+    .timeline {
+        padding: 20px 0; /* Slightly reduce padding on mobile */
+    }
+    .timeline::before {
+        left: 15px; /* Potentially bring the line slightly closer on very small screens */
+                    /* Ensure timeline-item padding-left and icon left are adjusted if this changes */
+    }
+    .timeline-item {
+        padding-left: 50px; /* Adjust if line left position changes: 15px + (36px_icon/2=18px) + 17px_gap */
+        margin-bottom: 30px;
+    }
+    .timeline-icon {
+        left: 15px; /* Match line's left position */
+        width: 36px; /* Slightly smaller icon on mobile */
+        height: 36px;
+        /* top: 5px; */ /* Adjust vertical icon position if needed for mobile */
+    }
+    .timeline-icon i {
+        font-size: 1rem;
+    }
+    .timeline-content {
+        padding: 15px 20px;
+    }
+    .timeline-content::before { /* Arrow from content to icon */
+        top: 12px;    /* Adjust arrow vertical position for mobile */
+        left: -10px;  /* Adjust arrow horizontal position and size if needed */
+        border-width: 10px 10px 10px 0;
+    }
+    .timeline-content h4 {
+        font-size: 1.1rem;
+    }
+    .timeline-content h5 {
+        font-size: 0.9rem;
+    }
+    .timeline-content ul {
+        font-size: 0.9rem;
+    }
+}
+
 /* ... rest of timeline styles (they use CSS variables so adapt well) ... */
 
 /* --- PROJECTS SECTION (#projects) --- */
@@ -324,12 +487,6 @@ body:not([data-bs-theme="dark"]):not([data-pentester-view="true"]) #about .secti
 /* Styles for .education-item etc. use CSS variables */
 .education-item { /* ... */ }
 
-/* --- INTERACTIVE DEMOS SECTION (#interactive-demos) --- */
-#interactive-demos { background-color: var(--cyber-dark-bg); } /* Always dark bg for demos */
-#interactive-demos .section-title { color: var(--cyber-dark-heading); }
-#interactive-demos .section-title::after { background: var(--cyber-accent-color); }
-/* Styles for .interactive-demo-card, #vulnScanInput, #miniTerminal use specific dark/cyber vars */
-.interactive-demo-card { /* ... */ }
 
 /* --- CONTACT SECTION (#contact) --- */
 #contact.contact-section-bg { background-color: var(--background-color); } /* Adapts to theme */
