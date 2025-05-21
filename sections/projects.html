@@ -1,13 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <!-- Ensure Bootstrap CSS is linked -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Ensure Font Awesome is linked -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Ensure AOS is linked (if you use it on the main page) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* Custom styles for project cards and section - you might have these in your main CSS */
+        .page-section {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        .section-title {
+            font-weight: 700;
+            color: #333;
+        }
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer; /* Indicates the card is clickable */
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15) !important;
+        }
+        .project-card .card-title {
+            color: #007bff; /* Or your primary theme color */
+        }
+        .project-tags .badge {
+            font-size: 0.75em;
+        }
+        .modal-body h4 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #0056b3;
+        }
+        .modal-body h4:first-child {
+            margin-top: 0;
+        }
+        .modal-body h5 {
+            margin-top: 1rem;
+            margin-bottom: 0.3rem;
+            color: #0069d9;
+        }
+        .modal-body ul {
+            padding-left: 1.2rem;
+        }
+        .modal-body li {
+            margin-bottom: 0.25rem;
+        }
+        .modal-body table {
+            margin-top: 1rem;
+        }
+        .modal-body pre {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            border: 1px solid #dee2e6;
+            white-space: pre-wrap; /* Ensures long lines wrap */
+            word-break: break-all; /* Ensures long words/paths break */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Projects Section -->
 <section id="projects" class="page-section py-5 bg-light">
     <div class="container" data-aos="fade-up">
         <h2 class="text-center mb-5 section-title">Featured Projects</h2>
         <div class="row g-4">
+            <!-- ChamaNest Project -->
             <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card h-100 shadow-sm project-card" data-bs-toggle="modal" data-bs-target="#projectModal" data-project-id="chama-nest">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-semibold">ChamaNest - Digital Chama Platform <span class="badge bg-success ms-2">Current Focus</span></h5>
+                        <p class="card-text text-muted small flex-grow-1">A mobile-first, non-custodial digital chama platform for Kenyan university students, offering transparent, gamified, and community-driven savings.</p>
+                        <div class="mb-3 project-tags">
+                            <span class="badge text-bg-primary me-1">MongoDB</span><span class="badge text-bg-success me-1">Express.js</span><span class="badge text-bg-info me-1">React</span><span class="badge text-bg-dark me-1">Node.js</span><span class="badge bg-warning text-dark me-1">FinTech</span>
+                        </div>
+                        <div class="project-links">
+                            <button class="btn btn-sm btn-outline-primary me-2"><i class="fas fa-eye me-1"></i> Case Study</button>
+                            <a href="https://github.com/owuorviny109/chamanest.git" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary" onclick="event.stopPropagation();"><i class="fab fa-github me-1"></i> Code</a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Attachment Platform -->
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200"> 
                 <div class="card h-100 shadow-sm project-card" data-bs-toggle="modal" data-bs-target="#projectModal" data-project-id="student-attachment">
-                    
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-semibold">Student Attachment Platform</h5>
-                        <p class="card-text text-muted small flex-grow-1">Streamlines student attachment applications, bridging students and employers.</p>
+                        <p class="card-text text-muted small flex-grow-1">Streamlines student attachment applications, bridging students and employers. An academic group project.</p>
                         <div class="mb-3 project-tags">
                             <span class="badge bg-primary me-1">PHP</span><span class="badge bg-success me-1">HTML</span><span class="badge bg-danger me-1">CSS</span><span class="badge bg-info me-1">JS</span><span class="badge bg-warning text-dark me-1">MySQL</span>
                         </div>
@@ -18,12 +107,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+
+            <!-- Personal Portfolio Website -->
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">  
                  <div class="card h-100 shadow-sm project-card" data-bs-toggle="modal" data-bs-target="#projectModal" data-project-id="personal-portfolio">
-                    
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-semibold">Personal Portfolio Website (This Site V1)</h5>
-                        <p class="card-text text-muted small flex-grow-1">Initial version of this portfolio, showcasing skills and projects with Bootstrap 5.</p>
+                        <p class="card-text text-muted small flex-grow-1">Initial version of this portfolio, showcasing skills and projects with Bootstrap 5, HTML, CSS, and JavaScript.</p>
                         <div class="mb-3 project-tags">
                             <span class="badge bg-primary me-1">HTML</span><span class="badge bg-danger me-1">CSS</span><span class="badge bg-info me-1">JS</span><span class="badge bg-secondary me-1">Bootstrap 5</span>
                         </div>
@@ -34,25 +124,28 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+
+            <!-- AI Pulse - Dynamic AI Blog -->
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400"> 
                 <div class="card h-100 shadow-sm project-card" data-bs-toggle="modal" data-bs-target="#projectModal" data-project-id="ai-pulse-blog">
-                   
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-semibold">AI Pulse - Dynamic AI Blog</h5>
-                        <p class="card-text text-muted small flex-grow-1">Responsive multi-page blog on AI, featuring SPA-like navigation and dynamic content.</p>
+                        <p class="card-text text-muted small flex-grow-1">Responsive multi-page blog on AI, featuring SPA-like navigation and dynamic content using HTML, CSS, and ES6+ JavaScript.</p>
                         <div class="mb-3 project-tags">
                             <span class="badge bg-primary me-1">HTML5</span><span class="badge bg-danger me-1">CSS3</span><span class="badge bg-info me-1">JS (ES6+)</span> <span class="badge bg-dark me-1">SPA-like</span>
                         </div>
                         <div class="project-links">
+                            <button class="btn btn-sm btn-outline-primary me-2"><i class="fas fa-eye me-1"></i> Case Study</button>
                             <a href="https://owuorviny109.github.io/AI-pulse-blog-app/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary me-2" onclick="event.stopPropagation();"><i class="fas fa-external-link-alt me-1"></i> Live Demo</a>
                             <a href="https://github.com/owuorviny109/AI-pulse-blog-app.git" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary" onclick="event.stopPropagation();"><i class="fab fa-github me-1"></i> Code</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+
+            <!-- AttachME - Android App -->
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
                 <div class="card h-100 shadow-sm project-card" data-bs-toggle="modal" data-bs-target="#projectModal" data-project-id="attachme-android">
-                     
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-semibold">AttachME - Android App <span class="badge bg-info ms-2">In Progress</span></h5>
                         <p class="card-text text-muted small flex-grow-1">Native Android app (Kotlin) connecting students with internships using Firebase and Jetpack Compose.</p>
@@ -68,4 +161,542 @@
             </div>
         </div>
     </div>
-</section> 
+</section>
+
+<!-- Project Details Modal -->
+<div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable"> <!-- modal-xl for very wide content, modal-lg is also good -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="projectModalLabel">Project Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Project details will be loaded here by JavaScript -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Ensure Bootstrap JS and Popper.js are linked (usually at the end of body) -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+<!-- Ensure AOS JS is linked and initialized (if you use it on the main page) -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init(); // Initialize AOS
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const projectDetails = {
+        'chama-nest': {
+            title: "ChamaNest: Powering Collective Savings for Kenyan University Students",
+            content: `
+                <h4>Executive Summary</h4>
+                <p>ChamaNest is a mobile-first, non-custodial digital chama platform tailored for Kenyan university students. It combines culturally familiar group saving practices with modern fintech tools to offer a transparent, gamified, and community-driven saving experience. With micro-contributions via M-Pesa STK push, democratic withdrawal voting, and embedded financial literacy, ChamaNest empowers students to save for rent, school fees, laptops, and emergencies from as little as KSh 50/day.</p>
+
+                <h4>The Problem</h4>
+                <p>Kenyan students face irregular income, outdated saving/chama methods, and lack student-centric financial products. Traditional chama systems are opaque and mistrusted, while most banking tools are complex or irrelevant. Students want to save—but lack the structure and trust mechanisms.</p>
+
+                <h4>Our Solution</h4>
+                <p>A student-only app that enables:</p>
+                <ul>
+                    <li>Group creation based on university goals</li>
+                    <li>M-Pesa STK Push micro-contributions</li>
+                    <li>Democratic withdrawal voting</li>
+                    <li>Transparent savings dashboards</li>
+                    <li>Gamification (streaks, badges)</li>
+                    <li>Contextual financial literacy tips</li>
+                </ul>
+
+                <h4>Key Differentiators</h4>
+                <table class="table table-sm table-bordered table-striped">
+                    <thead class="table-light">
+                        <tr><th>Feature</th><th>Legacy Chama Tools</th><th>ChamaNest</th><th>Advantage</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Audience</td><td>General public</td><td>University students (.ac.ke only)</td><td>Hyper-targeted, relevant</td></tr>
+                        <tr><td>Contributions</td><td>Manual, irregular</td><td>KSh 50/day via STK Push</td><td>Frictionless, habit-forming</td></tr>
+                        <tr><td>Withdrawal Control</td><td>Treasurer decides</td><td>Group voting</td><td>Transparent, democratic</td></tr>
+                        <tr><td>UX</td><td>Basic, generic</td><td>Gen Z-optimized, mobile-first</td><td>High engagement</td></tr>
+                        <tr><td>Financial Literacy</td><td>Rare</td><td>Integrated in-app tips</td><td>Contextual financial learning</td></tr>
+                        <tr><td>Fund Custody</td><td>Held by platform</td><td>Non-custodial via M-Pesa</td><td>Lower risk, regulatory clarity</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Target Users</h4>
+                <ul>
+                    <li>Sarah (JKUAT): Saves for rent in a trusted group.</li>
+                    <li>Kevin (UoN): Buys shared tech tools with friends.</li>
+                    <li>Judy (KU): Sets up an emergency fund for classmates.</li>
+                </ul>
+
+                <h4>MVP Features</h4>
+                <ul>
+                    <li>Group creation with campus-only visibility</li>
+                    <li>.ac.ke email verification</li>
+                    <li>M-Pesa integration for STK Push</li>
+                    <li>Withdrawal voting with real-time updates</li>
+                    <li>Saving templates and gamification elements</li>
+                </ul>
+
+                <h4>Tech Stack</h4>
+                <ul>
+                    <li>Frontend: React (PWA)</li>
+                    <li>Backend: Node.js + Express</li>
+                    <li>DB: MongoDB</li>
+                    <li>Payments: M-Pesa Daraja STK Push</li>
+                    <li>Real-time: Socket.IO</li>
+                    <li>Notifications: Twilio, EmailJS</li>
+                    <li>Auth: JWT + .ac.ke verification</li>
+                </ul>
+
+                <h4>Business Model</h4>
+                <ul>
+                    <li>1–2% transaction fee on withdrawals</li>
+                    <li>Optional KSh 100/month for "Verified Chama"</li>
+                    <li>Future partnerships with SACCOs, MMFs, and brokers</li>
+                </ul>
+
+                <h4>Security & Governance</h4>
+                <ul>
+                    <li>Non-custodial structure</li>
+                    <li>Voting prevents misuse of funds</li>
+                    <li>Light KYC for verified groups</li>
+                    <li>Encrypted and secure data practices</li>
+                </ul>
+
+                <h4>Go-to-Market</h4>
+                <ul>
+                    <li>Campus ambassadors in JKUAT, KU, UoN</li>
+                    <li>Gamified savings competitions</li>
+                    <li>Social media campaigns</li>
+                    <li>Student union partnerships</li>
+                    <li>On-campus workshops</li>
+                </ul>
+
+                <h4>Vision</h4>
+                <p>To become the financial backbone of Africa's youth, starting with student-led savings and scaling into SACCOs, MMFs, and USSD-based access for underserved populations.</p>
+                
+                <hr>
+                <h4>Development Insights & UI/UX Strategy</h4>
+
+                <h5>1. User Authentication</h5>
+                <p><strong>Features:</strong></p>
+                <ul>
+                    <li>Sign up / Login with university .ac.ke email verification</li>
+                    <li>JWT-based auth for security and session management</li>
+                    <li>Friendly UX with animated form transitions & input feedback (e.g., shaking invalid inputs, smooth success messages)</li>
+                    <li>Loading spinners and progress bars during async actions (e.g., sending verification emails)</li>
+                </ul>
+                <p><strong>Tech ideas:</strong></p>
+                <ul>
+                    <li>React Hook Form + Yup for form validation with animated error messages</li>
+                    <li>Framer Motion or React Spring for smooth, modern animations on forms</li>
+                    <li>Toast notifications (e.g., react-toastify) for success/error feedback with slide-in/out effects</li>
+                </ul>
+
+                <h5>2. Group Creation</h5>
+                <p><strong>Features:</strong></p>
+                <ul>
+                    <li>Dynamic multi-step form for group setup (name, purpose, invite members, set rules)</li>
+                    <li>Real-time validation & previews (like showing group summary live)</li>
+                    <li>Cool animated checkmarks and progress indicators for each step</li>
+                    <li>Interactive dropdowns and sliders for settings with smooth animations</li>
+                </ul>
+                <p><strong>Tech ideas:</strong></p>
+                <ul>
+                    <li>Use Framer Motion or React Spring for step transitions and animated components</li>
+                    <li>Drag & drop for inviting members or rearranging (e.g., react-beautiful-dnd)</li>
+                    <li>Real-time feedback with Socket.IO for live updates if needed later</li>
+                </ul>
+
+                <h5>3. General UI/UX Design</h5>
+                <p><strong>Goal:</strong></p>
+                <ul>
+                    <li>A visually appealing, modern UI inspired by popular fintech apps and gamified platforms</li>
+                    <li>Dynamic backgrounds, animated buttons, and micro-interactions</li>
+                    <li>Responsive for mobile-first (PWA ready)</li>
+                </ul>
+                <p><strong>Tools & Libraries:</strong></p>
+                <ul>
+                    <li>Tailwind CSS with custom animations or Chakra UI with motion support</li>
+                    <li>Framer Motion for all animations (hover, click, loading)</li>
+                    <li>Lottie animations for engaging vector animations (e.g., onboarding, empty states)</li>
+                </ul>
+                <p><strong>Example UX animation ideas:</strong></p>
+                <ul>
+                    <li>Input fields with floating labels that animate on focus</li>
+                    <li>Button hover animations with subtle scaling & shadows</li>
+                    <li>Smooth page transitions when navigating routes</li>
+                    <li>Animated loading skeletons instead of blank loaders</li>
+                    <li>Notification badges that bounce or pulse</li>
+                    <li>Progress bars with dynamic fill animations</li>
+                </ul>
+
+                <h5>Step 1: Set Up Core User Authentication Flow (with Accessibility & Animations)</h5>
+                <p><strong>Why first?</strong> Authentication is the gateway to your app, provides a solid base, and is where users first experience your app’s look and feel.</p>
+                <p><strong>What to do:</strong> Build Sign Up / Login pages, use React Hook Form + Yup, add animated feedback, include loaders, ensure accessibility, use Framer Motion/React Spring, add toast notifications. Optional: Lottie animation post-login.</p>
+
+                <h5>Step 2: Build Group Creation Multi-Step Form with Live Validation & Animations</h5>
+                <p><strong>Why second?</strong> Groups are core. Complex forms benefit from early UX focus. Real-time validation improves user control.</p>
+                <p><strong>What to do:</strong> Create multi-step form, integrate live validation, add animated progress indicators, use interactive elements, provide smooth transitions, prepare for Socket.IO.</p>
+
+                <h5>Step 3: Build General UI/UX Design Framework & Components Library</h5>
+                <p><strong>Why third?</strong> Consistent UI is professional. Early setup saves refactoring. Speeds up new feature development.</p>
+                <p><strong>What to do:</strong> Configure UI library, build reusable animated components, design dynamic interactions, implement accessibility, add motion preferences, use Lottie for onboarding.</p>
+
+                <h5>Step 4: Polish Error Handling, Performance, and Personalization</h5>
+                <p><strong>Why last?</strong> Refine UX after core flows/UI. Error handling improves trust. Performance ensures smoothness.</p>
+                <p><strong>What to do:</strong> Animate error states, add undo, implement retry/loading for network, use lazy loading, add contextual tooltips. Optional: sound feedback.</p>
+
+                <h5>Summary Roadmap:</h5>
+                <ol>
+                    <li><strong>User Authentication:</strong> React Hook Form + Yup, Framer Motion, toastify, accessibility</li>
+                    <li><strong>Group Creation:</strong> Multi-step animated form, react-beautiful-dnd, live validation</li>
+                    <li><strong>UI/UX Design Framework:</strong> Tailwind/Chakra, animated components, onboarding Lottie, accessibility</li>
+                    <li><strong>Error Handling & Perf.:</strong> Animated errors, undo, lazy loading, personalized tips</li>
+                </ol>
+
+                <h5>Recommended Plan for the Registration UI (Step-by-Step):</h5>
+                <ol>
+                    <li><strong>Build the UI Structure:</strong> Form with fields (Full Name, University Email, Password, Confirm Password), styled with Tailwind/Chakra, floating labels, good spacing.</li>
+                    <li><strong>Add Animations & Interactions:</strong> Use Framer Motion for page/input/button animations. Add feedback (shaking input, spinner, success animation).</li>
+                    <li><strong>Accessibility & Feedback:</strong> Ensure keyboard navigation, ARIA labels, responsive design. Use toast messages for feedback.</li>
+                </ol>
+            `
+        },
+        'student-attachment': {
+            title: "Student Attachment Platform - Case Study",
+            content: `
+                <p>Streamlines student attachment applications, bridging students and employers. This was developed as a group project for our academic studies.</p>
+                
+                <h4>🚀 Upcoming Features in Version 2</h4>
+                <p>AttachME is evolving! In Version 2, we plan to introduce the following improvements and new features:</p>
+
+                <h5>🔐 User Roles & Authentication</h5>
+                <ul>
+                    <li>Email verification and password reset via email</li>
+                    <li>Multi-factor authentication (MFA)</li>
+                </ul>
+
+                <h5>📈 Advanced Analytics</h5>
+                <ul>
+                    <li>Filter insights by date, company, or status</li>
+                    <li>Export analytics as PDF or CSV</li>
+                    <li>Admin activity logs and usage stats</li>
+                </ul>
+
+                <h5>🗂️ Application Workflow Enhancements</h5>
+                <ul>
+                    <li>Real-time application tracking with notifications</li>
+                    <li>Chat system between students and companies</li>
+                    <li>Application deadlines and reminders</li>
+                    <li>Chatbot</li>
+                    <li>CV, resume, and interview tips</li>
+                </ul>
+
+                <h5>🏢 Company Dashboard</h5>
+                <ul>
+                    <li>Company profiles with portfolio and history</li>
+                    <li>Ability to edit attachment opportunities</li>
+                    <li>View applications and shortlist candidates</li>
+                </ul>
+
+                <h5>👨‍🎓 Student Dashboard</h5>
+                <ul>
+                    <li>Editable student profile.</li>
+                    <li>Recommended attachment opportunities based on field of study and skills.</li>
+                    <li>Save opportunities to favorites</li>
+                </ul>
+
+                <h5>🌍 System Expansion</h5>
+                <ul>
+                    <li>Public-facing portal with featured opportunities</li>
+                    <li>Internationalization (multi-language support)</li>
+                    <li>Mobile responsive design (PWA or Flutter web support)</li>
+                </ul>
+
+                <h5>📡 API Integration</h5>
+                <ul>
+                    <li>REST API for mobile or third-party integrations</li>
+                    <li>Public endpoints for verified opportunities</li>
+                    <li>OAuth integration for third-party logins (Google, GitHub)</li>
+                </ul>
+
+                <h5>⚙️ Admin Panel Improvements</h5>
+                <ul>
+                    <li>Bulk actions (approve/reject users, delete applications)</li>
+                    <li>Data visualization upgrades (interactive charts)</li>
+                    <li>Notification system (email/SMS/Slack/Web Push)</li>
+                </ul>
+
+                <h5>🔒 Security & Performance</h5>
+                <ul>
+                    <li>SQL injection protection</li>
+                    <li>HTTPS setup with SSL support</li>
+                    <li>Optimization for performance and scalability</li>
+                </ul>
+            `
+        },
+        'personal-portfolio': {
+            title: "Personal Portfolio Website (This Site V1) - Case Study",
+            content: `
+                <h4>Vincent Omondi Portfolio</h4>
+                <p><a href="https://owuorviny109.github.io/my-portfolio-website/" target="_blank" rel="noopener noreferrer">Live Demo: https://owuorviny109.github.io/my-portfolio-website/</a></p>
+                <p>A modern, responsive, single-page application (SPA) portfolio for Vincent Omondi, Cybersecurity Specialist, Cloud Security Engineer, and Software Developer. Built with HTML, CSS (custom + Bootstrap 5), and JavaScript (ES6+), this site showcases technical skills, projects, education, and interactive cybersecurity demos.</p>
+
+                <h4>Features</h4>
+                <ul>
+                    <li><strong>SPA Navigation:</strong> Loads section content dynamically for fast, seamless transitions.</li>
+                    <li><strong>Responsive Design:</strong> Mobile-first layout using Bootstrap 5.</li>
+                    <li><strong>Dark & Pentester Themes:</strong> Toggle between light, dark, and pentester (red-team) color schemes.</li>
+                    <li><strong>AOS Animations:</strong> Smooth scroll and fade-in effects using AOS.</li>
+                    <li><strong>Interactive Demos:</strong> Includes a conceptual vulnerability scanner and a mini terminal with commands.</li>
+                    <li><strong>Project Modal:</strong> View project details in a Bootstrap modal.</li>
+                    <li><strong>Security Resources:</strong> Curated articles on cyber hygiene, threat modeling, and cloud security.</li>
+                    <li><strong>Contact Form:</strong> Email and quick message form (endpoint to be configured).</li>
+                    <li><strong>Accessibility:</strong> Keyboard navigation and focus styles.</li>
+                </ul>
+
+                <h4>Project Structure</h4>
+                <pre><code>index.html
+script.js
+style.css
+assets/
+    hero-background.jpg
+    industry.jpg
+    vincent omondi CV.pdf
+sections/
+    about.html
+    contact.html
+    education.html
+    experience.html
+    hero.html
+    interactive-demos.html
+    projects.html
+    skills.html
+    resources/
+        cloud-security-best-practices.html
+        cyber-hygiene-checklist.html
+        intro-threat-modeling.html</code></pre>
+                <ul>
+                    <li><strong>index.html:</strong> Main HTML file, loads the SPA shell and navigation.</li>
+                    <li><strong>script.js:</strong> Main JavaScript file (ES6 module), handles SPA navigation, theme toggling, interactive demos, and more.</li>
+                    <li><strong>style.css:</strong> Custom CSS, including theme variables, section styles, and responsive tweaks.</li>
+                    <li><strong>assets/:</strong> Images, CV PDF, and favicon resources.</li>
+                    <li><strong>sections/:</strong> HTML partials for each SPA section.</li>
+                    <li><strong>resources/:</strong> Security resource articles.</li>
+                </ul>
+
+                <h4>Getting Started</h4>
+                <h5>Prerequisites</h5>
+                <ul>
+                    <li>Modern web browser (Chrome, Firefox, Edge, Safari)</li>
+                    <li>No build tools required (pure HTML/CSS/JS)</li>
+                </ul>
+                <h5>Running Locally</h5>
+                <ol>
+                    <li>Clone or Download the Repository: <code>git clone https://github.com/owuorviny109/my-portfolio-website.git</code> then <code>cd my-portfolio-website</code></li>
+                    <li>Serve with a Local Web Server (SPA navigation uses fetch, so a server is needed):
+                        <ul>
+                            <li>Python 3: <code>python -m http.server 8000</code> (Open http://localhost:8000/)</li>
+                            <li>VS Code Live Server Extension: Right-click index.html and select "Open with Live Server".</li>
+                            <li>Node.js (http-server): <code>npx http-server .</code></li>
+                        </ul>
+                    </li>
+                    <li>Browse the Site: Navigate through the SPA using the navbar or footer links.</li>
+                </ol>
+
+                <h4>Customization</h4>
+                <ul>
+                    <li><strong>Update Personal Info:</strong> Edit sections/about.html, sections/contact.html, and index.html.</li>
+                    <li><strong>Add/Update Projects:</strong> Edit sections/projects.html and update the <code>projectData</code> object in script.js.</li>
+                    <li><strong>Add Skills:</strong> Edit sections/skills.html.</li>
+                    <li><strong>Add Security Resources:</strong> Add new HTML files in sections/resources/ and link them in about.html.</li>
+                    <li><strong>Change Theme Colors:</strong> Edit CSS variables in style.css.</li>
+                    <li><strong>Configure Contact Form:</strong> Set your form endpoint in sections/contact.html.</li>
+                </ul>
+
+                <h4>Main Technologies Used</h4>
+                <ul>
+                    <li>Bootstrap 5</li>
+                    <li>Font Awesome 6</li>
+                    <li>AOS (Animate On Scroll)</li>
+                    <li>Chart.js (for skill charts, optional)</li>
+                    <li>Google Fonts: Poppins, Roboto Mono</li>
+                </ul>
+
+                <h4>Notable Files</h4>
+                <ul>
+                    <li><strong>index.html:</strong> SPA shell, navbar, footer, modal.</li>
+                    <li><strong>script.js:</strong> SPA logic, navigation, theme, demos.</li>
+                    <li><strong>style.css:</strong> All custom styles and theme variables.</li>
+                    <li><strong>sections/:</strong> All main content sections as HTML partials.</li>
+                    <li><strong>sections/resources/:</strong> Security resource articles.</li>
+                </ul>
+
+                <h4>Deployment</h4>
+                <p>You can deploy this site to any static hosting provider (GitHub Pages, Netlify, Vercel, etc.). Ensure the server supports client-side routing (SPA) and serves all files from the root.</p>
+
+                <h4>Credits</h4>
+                <ul>
+                    <li>Vincent Omondi – Portfolio owner and developer.</li>
+                    <li>Bootstrap, Font Awesome, AOS, Chart.js</li>
+                </ul>
+
+                <h4>License</h4>
+                <p>This project is for personal portfolio use. For reuse or adaptation, please credit the original author.</p>
+
+                <h4>Contact</h4>
+                <ul>
+                    <li>Email: owuorvincent069@gmail.com</li>
+                    <li>LinkedIn: owuor-vincent-38b2b02ba</li>
+                    <li>GitHub: owuorviny109</li>
+                </ul>
+                <p><a href="https://owuorviny109.github.io/my-portfolio-website/" target="_blank" rel="noopener noreferrer">Live Demo</a></p>
+            `
+        },
+        'ai-pulse-blog': {
+            title: "AI Pulse: Exploring the Evolving Role of AI in Tech - Case Study",
+            content: `
+                <p>🔗 <a href="https://owuorviny109.github.io/AI-pulse-blog-app/" target="_blank" rel="noopener noreferrer">Live Demo: https://owuorviny109.github.io/AI-pulse-blog-app/</a></p>
+                
+                <h4>Project Overview</h4>
+                <p>AI Pulse is a fully responsive, multi-section blog website designed to explore the transformative impact of Artificial Intelligence (AI) on the modern technology landscape.</p>
+                <p>Built as a final front-end development project, it showcases a strong command of semantic HTML5, modular JavaScript (ES6+), and modern CSS3 techniques. The site mimics the behavior of a Single Page Application (SPA) by dynamically rendering content, allowing users to navigate fluidly between sections without full page reloads.</p>
+
+                <h4>Key Features</h4>
+                <ul>
+                    <li><strong>SPA-Like Navigation:</strong>
+                        <ul>
+                            <li>JavaScript-powered section switching simulates an SPA experience across sections like Home, What is AI?, Impacts, Blog, About, and Contact.</li>
+                            <li>Animated transitions (e.g., fade-in/out) enhance flow and visual appeal.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Responsive & Mobile-First Design:</strong>
+                        <ul>
+                            <li>Built using CSS Flexbox and Grid to create adaptable layouts.</li>
+                            <li>Media queries ensure optimized display across devices: smartphones, tablets, and desktops.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Interactive User Interface:</strong>
+                        <ul>
+                            <li>Dark Mode Toggle with persistent theme settings via localStorage.</li>
+                            <li>Expandable Blog Previews featuring “Read More / Read Less” functionality.</li>
+                            <li>⌨ Typing Animation in the hero section dynamically cycles through blog titles and themes.</li>
+                            <li>Scroll-to-Top Button appears based on scroll position for better UX on long pages.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Content-Rich, Dynamic Sections:</strong>
+                        <ul>
+                            <li><strong>What is AI?:</strong> Clickable, interactive cards explain foundational concepts like Core AI, Machine Learning, Deep Learning.</li>
+                            <li><strong>Impacts of AI:</strong> An animated responsive grid presents topics such as Automation, Job Market, Productivity, Innovation, AI in Kenya. Each topic includes real-world examples, positive/negative implications, and external resources.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Accessibility & Semantics:</strong>
+                        <ul>
+                            <li>Uses semantic HTML5 elements for structure and SEO.</li>
+                            <li>ARIA attributes improve accessibility for screen readers and assistive tech.</li>
+                            <li>Fully keyboard-navigable UI and accessible controls.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Modern Styling:</strong>
+                        <ul>
+                            <li>Built with CSS Variables for scalable theming and cleaner code maintenance.</li>
+                            <li>Professional visual hierarchy, elegant typography, and consistent spacing.</li>
+                            <li>Scroll-based animations powered by AOS (Animate on Scroll) for subtle motion effects.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Modular & Maintainable JavaScript:</strong>
+                        <ul>
+                            <li>Written in modern ES6+ syntax.</li>
+                            <li>Organized into modular functions for navigation, theme switching, and dynamic content display.</li>
+                            <li>Code is well-commented, easy to extend, and highly readable.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4>Tech Stack</h4>
+                <table class="table table-sm table-bordered">
+                    <thead class="table-light">
+                        <tr><th>Technology</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>HTML5</td><td>Semantic markup for accessibility and structure</td></tr>
+                        <tr><td>CSS3</td><td>Responsive layouts via Flexbox & Grid, media queries, CSS Variables</td></tr>
+                        <tr><td>JavaScript (ES6+)</td><td>DOM manipulation, event handling, theme persistence with localStorage, smooth animations with requestAnimationFrame</td></tr>
+                        <tr><td>AOS (Animate on Scroll)</td><td>Lightweight animation library for scroll-based effects</td></tr>
+                        <tr><td>Font Awesome</td><td>Scalable vector icons for intuitive UI/UX</td></tr>
+                    </tbody>
+                </table>
+            `
+        },
+        'attachme-android': {
+            title: "AttachME - Android App Case Study",
+            content: `
+                <p>AttachME is a modern Android application designed to connect students seeking internships with companies offering opportunities. It leverages the power of Jetpack Compose for the UI, Firebase Authentication for user management, and Firestore for real-time data syncing, creating a seamless experience for both students and companies.</p>
+
+                <h4>Features</h4>
+                <ul>
+                    <li><strong>User Authentication:</strong> Students and companies can sign up and log in using Firebase Authentication. Students can view internship opportunities, while companies can post and manage their internship listings.</li>
+                    <li><strong>Post Internships:</strong> Companies can easily create and post internship opportunities, including details like company name, position title, description, requirements, location, duration, available slots, and application deadline.</li>
+                    <li><strong>Browse Opportunities:</strong> Students can browse available internships in real-time, ordered by the most recently posted. They can also apply directly for positions of interest.</li>
+                    <li><strong>Real-Time Updates:</strong> Internship listings are automatically updated in real-time using Firestore. As companies post or modify opportunities, the changes are reflected immediately for all users.</li>
+                    <li><strong>Clean UI:</strong> Built with Jetpack Compose, the app provides a modern and fluid user interface optimized for both phone and tablet devices. The design is simple yet effective, ensuring a smooth user experience.</li>
+                    <li><strong>Error Handling:</strong> Proper error states are displayed to users in case of failures or loading issues, ensuring a user-friendly experience.</li>
+                </ul>
+
+                <h4>Tech Stack</h4>
+                <ul>
+                    <li><strong>Android:</strong> The app is built using the latest Android technologies, including Jetpack Compose for the user interface and ViewModel for managing UI-related data lifecycle-consciously.</li>
+                    <li><strong>Firebase:</strong>
+                        <ul>
+                            <li>Firebase Authentication for user sign-up, login, and account management.</li>
+                            <li>Cloud Firestore for storing and managing internship opportunities in real-time.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Kotlin:</strong> The app is written in Kotlin, leveraging its modern, expressive syntax to handle both backend logic and UI components.</li>
+                    <li><strong>Dagger Hilt:</strong> Dependency injection is handled with Dagger Hilt for better scalability, cleaner code, and easy testing.</li>
+                    <li><strong>Coroutines & Flow:</strong> Kotlin Coroutines and Flow are used to manage background tasks and stream data, ensuring smooth and responsive performance even with large amounts of data.</li>
+                </ul>
+            `
+        }
+    };
+
+    const projectModal = document.getElementById('projectModal');
+    if (projectModal) {
+        projectModal.addEventListener('show.bs.modal', event => {
+            // Button that triggered the modal OR the card itself if it has data-bs-toggle
+            const triggerElement = event.relatedTarget; 
+            
+            // Find the project card, which should have the data-project-id
+            // If the triggerElement is the card itself, this is direct.
+            // If the triggerElement is a button INSIDE the card, we might need to go up to find the card.
+            // Given the HTML, event.relatedTarget IS the .project-card div.
+            const projectCard = triggerElement; 
+            const projectId = projectCard.getAttribute('data-project-id');
+            
+            const details = projectDetails[projectId];
+
+            const modalTitle = projectModal.querySelector('.modal-title');
+            const modalBody = projectModal.querySelector('.modal-body');
+
+            if (details) {
+                modalTitle.textContent = details.title;
+                modalBody.innerHTML = details.content;
+            } else {
+                modalTitle.textContent = 'Details Not Found';
+                modalBody.innerHTML = '<p>Sorry, the case study for this project could not be loaded at this time.</p>';
+            }
+        });
+    }
+});
+</script>
+
+</body>
+</html>
